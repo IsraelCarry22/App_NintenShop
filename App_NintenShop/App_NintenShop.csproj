@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E64EC53-76B7-4C67-BFBC-6D446FACC77E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>App_NintenShop</RootNamespace>
+    <AssemblyName>App_NintenShop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\Consola.cs" />
+    <Compile Include="From_NintenShop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="From_NintenShop.Designer.cs">
+      <DependentUpon>From_NintenShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="interfaces\IConsola_juegos.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Clases\Videojuego.cs" />
+    <EmbeddedResource Include="From_NintenShop.resx">
+      <DependentUpon>From_NintenShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carrito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Castlevania 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Donkey kong.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Final fantasy adventure.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Kirby dream land 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Mario tennis.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Mega man V.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Metroid 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Pokemon amarillo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Pokemon rojo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Super mario land 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Super mario land.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_The legend of zelda ages.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_The legend of zelda links awakening.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_The legend of zelda seasons.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gb_Wario land 1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Advance war 1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Castlevania arrial of sorrow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Castlevania cirvcle of moon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Kirby amasing mirrow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Mario y luigi super star saga.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Metroid fusion.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Metroid zero mission.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Mother 3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Pokemon esmeralda.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Pokemon rojo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Super mario advance 4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Super mario world.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_The legend of zelda minish cap.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Wario land 4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gba_Yoshi island.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Banjo kazooie.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Donkey kong 64.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Doom 64.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Kirby stars 64.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Mario kart 64.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Mario party.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Mario tennis.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Paper mario.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Pokemon stadium.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Star fox 64.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Super mario 64.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Super smash bros.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_The legend of zelda majora mask.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_The legend of zelda ocarina of time.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\N64_Perfect_dark.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Battletoads.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Bomberman.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Castlevania 3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Castlevania.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Contra.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Earthbound.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_kid ikarus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Kirby adventure.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Mega man 1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Mega man 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Metroid.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Ponch out.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Super mario bros 3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_Super mario bros.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ness_The legen of zelda.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Crono triger.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Donkey kong country.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Kirby super star.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Mega man X.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Street fighter 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Super bomberman.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Super castlevania 4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Super mario kart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Super mario world.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_The legen of zelda link to the past.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Yoshi island.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sness_Earthbound 2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sness_Fzero.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sness_Super ghoulsn_ghostsjpg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Snes_Super metroid.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Estrella_vacia1.png" />
+    <None Include="Resources\Estrella1.png" />
+    <None Include="Resources\Estrella_vacia.png" />
+    <None Include="Resources\Estrella.png" />
+    <Content Include="Resources\NintenShop.wav" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
