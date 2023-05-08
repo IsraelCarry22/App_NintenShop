@@ -474,8 +474,8 @@ namespace App_NintenShop
                         {
                             archivo.WriteLine(consola.Ticket());
                         }
-                        archivo.WriteLine($"Iva: {Compra_final_iva}.");
-                        archivo.WriteLine($"Compra Total: {Compra_final}.");
+                        archivo.WriteLine($"Iva: ${Compra_final_iva}.");
+                        archivo.WriteLine($"Compra Total: #{Compra_final}.");
                         archivo.WriteLine("\nGracias por comprar en NintenShop Inc.");
                         archivo.Close();
                     }
