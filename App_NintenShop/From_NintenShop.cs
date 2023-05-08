@@ -4,22 +4,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics.Contracts;
-using System.Drawing.Drawing2D;
-using System.Security.Cryptography;
-using System.Text.RegularExpressions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
-using System.IO.Ports;
-using System.Reflection;
-using static System.Net.WebRequestMethods;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Collections;
 
 namespace App_NintenShop
 {
