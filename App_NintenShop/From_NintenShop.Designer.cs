@@ -53,7 +53,6 @@ namespace App_NintenShop
             this.btm_filter_snes = new System.Windows.Forms.PictureBox();
             this.btm_filter_nes = new System.Windows.Forms.PictureBox();
             this.btn_carrito = new System.Windows.Forms.PictureBox();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.Pic_Caratulas = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -62,6 +61,8 @@ namespace App_NintenShop
             this.lbl_contador_carrito = new System.Windows.Forms.Label();
             this.Panel_Carrito = new System.Windows.Forms.Panel();
             this.Panel_Ayuda = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.Btn_imprimir_carrito = new System.Windows.Forms.Button();
@@ -72,8 +73,6 @@ namespace App_NintenShop
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.List_carrito = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btm_filter_gba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btm_filter_n64)).BeginInit();
@@ -81,7 +80,6 @@ namespace App_NintenShop
             ((System.ComponentModel.ISupportInitialize)(this.btm_filter_snes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btm_filter_nes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_carrito)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Caratulas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -314,10 +312,6 @@ namespace App_NintenShop
             this.toolTip1.SetToolTip(this.btn_carrito, "Ver carrito");
             this.btn_carrito.Click += new System.EventHandler(this.Btn_carrito_Click);
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // Pic_Caratulas
             // 
             this.Pic_Caratulas.BackColor = System.Drawing.Color.Gray;
@@ -414,6 +408,28 @@ namespace App_NintenShop
             this.Panel_Ayuda.Name = "Panel_Ayuda";
             this.Panel_Ayuda.Size = new System.Drawing.Size(826, 502);
             this.Panel_Ayuda.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label7.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(40, 455);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(531, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Gracias por darle un uso correcto al software: Attm. J. Israel C. Moncada.";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(38, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(735, 192);
+            this.label3.TabIndex = 2;
+            this.label3.Text = resources.GetString("label3.Text");
             // 
             // pictureBox4
             // 
@@ -526,28 +542,6 @@ namespace App_NintenShop
             this.List_carrito.Size = new System.Drawing.Size(741, 279);
             this.List_carrito.TabIndex = 0;
             // 
-            // label3
-            // 
-            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(38, 122);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(735, 192);
-            this.label3.TabIndex = 2;
-            this.label3.Text = resources.GetString("label3.Text");
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label7.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(40, 455);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(531, 20);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Gracias por darle un uso correcto al software: Attm. J. Israel C. Moncada.";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // From_NintenShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,7 +583,6 @@ namespace App_NintenShop
             ((System.ComponentModel.ISupportInitialize)(this.btm_filter_snes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btm_filter_nes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_carrito)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Caratulas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -630,7 +623,6 @@ namespace App_NintenShop
         private System.Windows.Forms.Button btn_añadir_carrito;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lbl_precio;
         private System.Windows.Forms.Label lbl_bits;
         private System.Windows.Forms.Label lbl_contador_carrito;

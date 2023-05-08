@@ -69,7 +69,15 @@ namespace App_NintenShop
 
         public override string Ticket()
         {
-            return base.ToString() + $"Titulo: {Title.ToUpper()}" + "\n" + $"Genero: {Gender.ToUpper()}" + "\n" + $"Unidades: {Quiantity}" + "\n" + $"Precio: ${Price}" + "\n\n";
+            return $"Titulo: {Title.ToUpper()}"
+                + "\n" + $"Año: {Year}"
+                + "\n" + $"Genero: {Gender.ToUpper()}"
+                + "\n" + $"Consola: {Console.ToUpper()}"
+                + "\n" + $"Creadores: {Creators.ToUpper()}"
+                + "\n" + $"Precio: ${Price}"
+                + "\n" + $"Unidades: {Quiantity}"
+                + "\n" + $"Bits: {Bits}"
+                + "\n\n" + base.ToString();
         }
     }
 }

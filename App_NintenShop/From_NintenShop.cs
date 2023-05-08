@@ -1,19 +1,19 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using System.Media;
+using System.IO;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Media;
 using System.Diagnostics.Contracts;
 using System.Drawing.Drawing2D;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
-using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.IO.Ports;
 using System.Reflection;
@@ -465,6 +465,7 @@ namespace App_NintenShop
         private void Btn_carrito_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
+            Panel_Ayuda.Visible = false;
         }
 
         private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
@@ -489,12 +490,12 @@ namespace App_NintenShop
                         {
                             archivo.WriteLine(consola.Ticket());
                         }
-                        archivo.WriteLine("\n");
                         archivo.WriteLine($"Iva: {Compra_final_iva}.");
                         archivo.WriteLine($"Compra Total: {Compra_final}.");
                         archivo.WriteLine("\nGracias por comprar en NintenShop Inc.");
                         archivo.Close();
                     }
+                    Console.Beep();
                     MessageBox.Show("Ticke impreso exitosamente...");
                     List_carrito.Items.Clear();
                     Lista_videojuegos_carrito.Clear();
@@ -1850,6 +1851,7 @@ namespace App_NintenShop
 
         private void Panel_carrito_agregar()
         {
+            Console.Beep();
             Consola consola_agregada = Lista_videojuegos_carrito.Last();
             Videojuego videojuego_agregado = (Videojuego)consola_agregada;
             List_carrito.Items.Add(videojuego_agregado.ToString());
