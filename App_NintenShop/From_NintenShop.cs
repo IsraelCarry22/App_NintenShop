@@ -124,7 +124,7 @@ namespace App_NintenShop
             this.MaximizeBox = false;
             music = @"C:\Users\Israe\Documents\Trabajos de la Universidad\personal\App_NintenShop\App_NintenShop\Resources\NintenShop.wav";
             SoundPlayer player = new SoundPlayer(music);
-            player.PlayLooping();
+            player.Play();
             Lista_videojuegos_carrito = new List<Consola>();
             #region inicializacion de matrizes
             #region //Consolas
