@@ -96,7 +96,7 @@ namespace App_NintenShop
         readonly Videojuego Gba_Mario_y_luigi_super_satar_saga;
         readonly Videojuego Gba_The_legend_of_zelda_minish_cap;
         readonly Videojuego Gba_Wario_land_4;
-        readonly Videojuego Gba_Pokemon_rojo_remake;
+        readonly Videojuego Gba_Mega_Man_Zero_3;
         readonly Videojuego Gba_Metroid_zero_mission;
         readonly Videojuego Gba_Pokemon_esmeralda;
         readonly Videojuego Gba_Kirby_y_el_laberinto_de_los_espejos;
@@ -106,7 +106,7 @@ namespace App_NintenShop
         readonly Videojuego Gba_Super_mario_advance_4;
         readonly Videojuego Gba_Super_mario_world;
         readonly Videojuego Gba_Yoshis_island_remake;
-        readonly Videojuego Gba_Advance_war_2;
+        readonly Videojuego Gba_Mega_Man_Zero;
         readonly Videojuego Gba_Metroid_fusion;
         #endregion
 
@@ -274,8 +274,8 @@ namespace App_NintenShop
             Consolas_gba[1] = Gba_The_legend_of_zelda_minish_cap;
             Gba_Wario_land_4 = new Videojuego("Wario Land 4", "Plataformas", "Nintendo R&D1", 30, "GBA", 2001, 32, 1);
             Consolas_gba[2] = Gba_Wario_land_4;
-            Gba_Pokemon_rojo_remake = new Videojuego("Pokemon Rojo Fuego", "RPG", "Game Freak", 40, "GBA", 2004, 32, 1);
-            Consolas_gba[3] = Gba_Pokemon_rojo_remake;
+            Gba_Mega_Man_Zero_3 = new Videojuego("Mega Man Zero 3", "Plataformas", "Capcom", 45, "GBA", 2004, 32, 1);
+            Consolas_gba[3] = Gba_Mega_Man_Zero_3;
             Gba_Metroid_zero_mission = new Videojuego("Metroid Zero Mission", "Acción-aventura", "Nintendo R&D1", 30, "GBA", 2004, 32, 1);
             Consolas_gba[4] = Gba_Metroid_zero_mission;
             Gba_Pokemon_esmeralda = new Videojuego("Pokemon Esmeralda", "RPG", "Game Freak", 40, "GBA", 2005, 32, 1);
@@ -294,8 +294,8 @@ namespace App_NintenShop
             Consolas_gba[11] = Gba_Super_mario_world;
             Gba_Yoshis_island_remake = new Videojuego("Yoshi's Island: Super Mario Advance 3", "Plataformas", "Nintendo", 25, "GBA", 2002, 32, 1);
             Consolas_gba[12] = Gba_Yoshis_island_remake;
-            Gba_Advance_war_2 = new Videojuego("Advance Wars 2: Black Hole Rising", "Estrategia por turnos", "Intelligent Systems", 30, "GBA", 2003, 32, 1);
-            Consolas_gba[13] = Gba_Advance_war_2;
+            Gba_Mega_Man_Zero = new Videojuego("Mega Man Zero", "Plataformas", "Capcom", 40, "GBA", 2003, 32, 1);
+            Consolas_gba[13] = Gba_Mega_Man_Zero;
             Gba_Metroid_fusion = new Videojuego("Metroid Fusion", "Acción, aventura", "Nintendo R&D1", 30, "GBA", 2002, 32, 1);
             Consolas_gba[14] = Gba_Metroid_fusion;
             #endregion
@@ -781,8 +781,8 @@ namespace App_NintenShop
                         case "Wario Land 4":
                             Pic_Caratulas.Image = Properties.Resources.Gba_Wario_land_4;
                             break;
-                        case "Pokemon Rojo Fuego":
-                            Pic_Caratulas.Image = Properties.Resources.Gba_Pokemon_rojo;
+                        case "Mega Man Zero 3":
+                            Pic_Caratulas.Image = Properties.Resources.Gba_Mega_Man_Zero_3;
                             break;
                         case "Metroid Zero Mission":
                             Pic_Caratulas.Image = Properties.Resources.Gba_Metroid_zero_mission;
@@ -811,8 +811,8 @@ namespace App_NintenShop
                         case "Yoshi's Island: Super Mario Advance 3":
                             Pic_Caratulas.Image = Properties.Resources.Gba_Yoshi_island;
                             break;
-                        case "Advance Wars 2: Black Hole Rising":
-                            Pic_Caratulas.Image = Properties.Resources.Gba_Advance_war_1;
+                        case "Mega Man Zero":
+                            Pic_Caratulas.Image = Properties.Resources.Gba_Mega_Man_Zero;
                             break;
                         case "Metroid Fusion":
                             Pic_Caratulas.Image = Properties.Resources.Gba_Metroid_fusion;
@@ -1696,10 +1696,10 @@ namespace App_NintenShop
                                 Panel_carrito_agregar();
                             }
                             break;
-                        case "Pokemon Rojo Fuego":
-                            if (!Lista_videojuegos_carrito.Contains(Gba_Pokemon_rojo_remake))
+                        case "Mega Man Zero 3":
+                            if (!Lista_videojuegos_carrito.Contains(Gba_Mega_Man_Zero_3))
                             {
-                                Lista_videojuegos_carrito.Add(Gba_Pokemon_rojo_remake);
+                                Lista_videojuegos_carrito.Add(Gba_Mega_Man_Zero_3);
                                 accountan++;
                                 lbl_contador_carrito.Text = accountan.ToString();
                                 Compra_final += (selected_game.PRICE);
@@ -1806,10 +1806,10 @@ namespace App_NintenShop
                                 Panel_carrito_agregar();
                             }
                             break;
-                        case "Advance Wars 2: Black Hole Rising":
-                            if (!Lista_videojuegos_carrito.Contains(Gba_Advance_war_2))
+                        case "Mega Man Zero":
+                            if (!Lista_videojuegos_carrito.Contains(Gba_Mega_Man_Zero))
                             {
-                                Lista_videojuegos_carrito.Add(Gba_Advance_war_2);
+                                Lista_videojuegos_carrito.Add(Gba_Mega_Man_Zero);
                                 accountan++;
                                 lbl_contador_carrito.Text = accountan.ToString();
                                 Compra_final += (selected_game.PRICE);
@@ -1856,8 +1856,8 @@ namespace App_NintenShop
             List_carrito.Items.RemoveAt(indiceSeleccionado);
             Lista_videojuegos_carrito.RemoveAt(indiceSeleccionado);
             accountan -= 1;
-            llbl_compra_iva_carrito.Text = $"${Math.Round((Compra_final * .16), 2).ToString()}.";
-            lbl_compra_total_carrito.Text = $"${Compra_final.ToString()}.";
+            llbl_compra_iva_carrito.Text = $"${Math.Round((Compra_final * .16), 2).ToString()}" + ".";
+            lbl_compra_total_carrito.Text = $"${Compra_final.ToString()}" + ".";
             lbl_contador_carrito.Text = accountan.ToString();
         }
     }

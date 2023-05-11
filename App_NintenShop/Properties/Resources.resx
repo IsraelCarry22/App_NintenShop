@@ -151,6 +151,9 @@
   <data name="Ness_Castlevania" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ness_Castlevania.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Estrella" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Estrella1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,9 +162,6 @@
   </data>
   <data name="Ness_Battletoads" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ness_Battletoads.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Snes_Super metroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Snes_Super metroid.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gba_Castlevania cirvcle of moon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gba_Castlevania cirvcle of moon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -183,6 +183,9 @@
   </data>
   <data name="Snes_Street fighter 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Snes_Street fighter 2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gba_Pokemon esmeralda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gba_Pokemon esmeralda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Snes_Super castlevania 4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Snes_Super castlevania 4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,12 +217,6 @@
   <data name="Gb_Mario tennis" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb_Mario tennis.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ness_Metroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ness_Metroid.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Ness_Earthbound" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ness_Earthbound.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Gba_Yoshi island" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gba_Yoshi island.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -235,8 +232,14 @@
   <data name="Gb_Donkey kong" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb_Donkey kong.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Ness_Ponch out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ness_Ponch out.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Gb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gba_Kirby amasing mirrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gba_Kirby amasing mirrow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gb_The legend of zelda links awakening" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb_The legend of zelda links awakening.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,6 +259,9 @@
   <data name="Gba_Advance war 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gba_Advance war 1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="N64_The legend of zelda ocarina of time" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\N64_The legend of zelda ocarina of time.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Gb_Castlevania 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb_Castlevania 2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -264,6 +270,9 @@
   </data>
   <data name="N64_Super mario 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\N64_Super mario 64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Estrella_vacia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Estrella_vacia1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,8 +283,8 @@
   <data name="Gb_Super mario land 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb_Super mario land 2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ness_The legen of zelda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ness_The legen of zelda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gb_The legend of zelda seasons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gb_The legend of zelda seasons.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gb_Mega man V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb_Mega man V.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,14 +301,14 @@
   <data name="Gba_Mother 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gba_Mother 3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Ness_The legen of zelda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ness_The legen of zelda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="N64_Mario kart 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\N64_Mario kart 64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gba_Pokemon rojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gba_Pokemon rojo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gb_The legend of zelda seasons" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gb_The legend of zelda seasons.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="N64_Pokemon stadium" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\N64_Pokemon stadium.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -322,14 +331,11 @@
   <data name="Gba_Super mario world" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gba_Super mario world.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="N64_The legend of zelda ocarina of time" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\N64_The legend of zelda ocarina of time.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ness_Earthbound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ness_Earthbound.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gb_Wario land 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gb_Wario land 1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gba_Kirby amasing mirrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gba_Kirby amasing mirrow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Ness_Metroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ness_Metroid.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gb_The legend of zelda ages" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gb_The legend of zelda ages.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,20 +343,20 @@
   <data name="Snes_Kirby super star" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Snes_Kirby super star.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="carrito" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\carrito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="N64_Kirby stars 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\N64_Kirby stars 64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sness_Fzero" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sness_Fzero.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ness_Ponch out" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ness_Ponch out.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="carrito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\carrito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gba_Pokemon esmeralda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gba_Pokemon esmeralda.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gb_Wario land 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gb_Wario land 1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="N64_Kirby stars 64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\N64_Kirby stars 64.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Snes_Super metroid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Snes_Super metroid.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ness_Mega man 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ness_Mega man 2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -367,10 +373,10 @@
   <data name="Gba_Wario land 4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gba_Wario land 4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Estrella" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Estrella1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gba_Mega Man Zero 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gba_Mega Man Zero 3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Estrella_vacia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Estrella_vacia1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gba_Mega Man Zero" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gba_Mega Man Zero.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -313,6 +313,26 @@ namespace App_NintenShop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gba_Mega_Man_Zero {
+            get {
+                object obj = ResourceManager.GetObject("Gba_Mega Man Zero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gba_Mega_Man_Zero_3 {
+            get {
+                object obj = ResourceManager.GetObject("Gba_Mega Man Zero 3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gba_Metroid_fusion {
             get {
                 object obj = ResourceManager.GetObject("Gba_Metroid fusion", resourceCulture);

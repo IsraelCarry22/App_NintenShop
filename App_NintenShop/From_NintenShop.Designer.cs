@@ -124,12 +124,12 @@ namespace App_NintenShop
             // 
             // List_juegos
             // 
-            this.List_juegos.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.List_juegos.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.List_juegos.FormattingEnabled = true;
-            this.List_juegos.ItemHeight = 20;
+            this.List_juegos.ItemHeight = 25;
             this.List_juegos.Location = new System.Drawing.Point(8, 174);
             this.List_juegos.Name = "List_juegos";
-            this.List_juegos.Size = new System.Drawing.Size(318, 344);
+            this.List_juegos.Size = new System.Drawing.Size(318, 329);
             this.List_juegos.TabIndex = 9;
             this.List_juegos.SelectedIndexChanged += new System.EventHandler(this.List_juegos_SelectedIndexChanged);
             // 

@@ -375,6 +375,8 @@
     <None Include="Resources\Estrella_vacia.png" />
     <None Include="Resources\Estrella.png" />
     <Content Include="logoTecNM.ico" />
+    <None Include="Resources\Gba_Mega Man Zero 3.jpg" />
+    <None Include="Resources\Gba_Mega Man Zero.jpg" />
     <Content Include="Resources\NintenShop.wav" />
   </ItemGroup>
   <ItemGroup>
