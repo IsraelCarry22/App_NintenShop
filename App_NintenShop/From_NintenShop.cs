@@ -1839,8 +1839,8 @@ namespace App_NintenShop
             Consola consola_agregada = Lista_videojuegos_carrito.Last();
             Videojuego videojuego_agregado = (Videojuego)consola_agregada;
             List_carrito.Items.Add(videojuego_agregado.ToString());
-            llbl_compra_iva_carrito.Text = $"${Compra_final_iva.ToString()}.";
-            lbl_compra_total_carrito.Text = $"${Compra_final.ToString()}.";
+            llbl_compra_iva_carrito.Text = $"${Compra_final_iva.ToString()}" + ".";
+            lbl_compra_total_carrito.Text = $"${Compra_final.ToString()}" + ".";
         }
 
         private void Panel_carrito_eliminar()
