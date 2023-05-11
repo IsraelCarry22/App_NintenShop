@@ -13,5 +13,7 @@ namespace App_NintenShop
         string CREATORS { get; set; }
         int PRICE { get; set; }
         int QUANTITY { get; set; }
+        string ToString();
+        string Ticket();
     }
 }
