@@ -9,114 +9,38 @@ namespace App_NintenShop
 {
 	public partial class From_NintenShop : Form
 	{
-        #region Arreglos y objetos
+        #region Arreglos y lista
         #region Nintendo
-        readonly Consola[] Consolas_nes;
-		readonly Consola[] Consolas_snes;
-		readonly Consola[] Consolas_n64;
-		readonly Consola[] Consolas_gb;
-		readonly Consola[] Consolas_gba;
-        readonly List<Consola> Lista_videojuegos_carrito;
+        Videojuego[] Consolas_nes,Consolas_snes,Consolas_n64,Consolas_gb,Consolas_gba;
+        List<Consola> Lista_videojuegos_carrito;
         #endregion
         #region consolas
 
         #region Nes
-        readonly Videojuego Nes_Super_mario_bros;
-        readonly Videojuego Nes_Super_mario_bros_3;
-        readonly Videojuego Nes_Mega_man_1;
-        readonly Videojuego Nes_Mega_man_2;
-        readonly Videojuego Nes_Metroid;
-        readonly Videojuego Nes_Kirby_adventure;
-        readonly Videojuego Nes_The_legend_of_zelda;
-        readonly Videojuego Nes_Castlevania;
-        readonly Videojuego Nes_Castlevania_3;
-        readonly Videojuego Nes_Kid_ikarus;
-        readonly Videojuego Nes_Earthbound;
-        readonly Videojuego Nes_Bomberman;
-        readonly Videojuego Nes_Pounch_out;
-        readonly Videojuego Nes_Contra;
-        readonly Videojuego Nes_Battletoads;
+        Videojuego Nes_Super_mario_bros,Nes_Super_mario_bros_3,Nes_Mega_man_1,Nes_Mega_man_2,Nes_Metroid,Nes_Kirby_adventure,Nes_The_legend_of_zelda,Nes_Castlevania,Nes_Castlevania_3,Nes_Kid_ikarus,Nes_Earthbound,Nes_Bomberman,Nes_Pounch_out,Nes_Contra,Nes_Battletoads;
         #endregion
 
         #region Snes
-        readonly Videojuego Snes_Super_mario_word;
-        readonly Videojuego Snes_Crono_triger;
-        readonly Videojuego Snes_Street_fighter_3;
-        readonly Videojuego Snes_Super_mario_kart;
-        readonly Videojuego Snes_Mega_man_x;
-        readonly Videojuego Snes_Kirby_super_star;
-        readonly Videojuego Snes_The_legend_of_zelda_a_link_to_the_past;
-        readonly Videojuego Snes_Super_Castlevania_4;
-        readonly Videojuego Snes_Super_metroid;
-        readonly Videojuego Snes_Donkey_Kong_country;
-        readonly Videojuego Snes_Earthbound_2;
-        readonly Videojuego Snes_Super_Bomberman;
-        readonly Videojuego Snes_Yoshis_island;
-        readonly Videojuego Snes_FZero;
-        readonly Videojuego Snes_Super_gouls_n_ghost;
+        Videojuego Snes_Super_mario_word,Snes_Crono_triger,Snes_Street_fighter_3,Snes_Super_mario_kart,Snes_Mega_man_x,Snes_Kirby_super_star,Snes_The_legend_of_zelda_a_link_to_the_past,Snes_Super_Castlevania_4,Snes_Super_metroid,Snes_Donkey_Kong_country,Snes_Earthbound_2,Snes_Super_Bomberman,Snes_Yoshis_island,Snes_FZero,Snes_Super_gouls_n_ghost;
         #endregion
 
         #region N64
-        readonly Videojuego N64_Mario_party;
-        readonly Videojuego N64_Perfect_dark;
-        readonly Videojuego N64_Donkey_kong_64;
-        readonly Videojuego N64_Mario_tenis;
-        readonly Videojuego N64_Doom_64;
-        readonly Videojuego N64_Kirby_stars_64;
-        readonly Videojuego N64_The_legend_of_zelda_majora_mask;
-        readonly Videojuego N64_The_legend_of_zelda_ocarina_of_time;
-        readonly Videojuego N64_Super_mario_64;
-        readonly Videojuego N64_Paper_mario;
-        readonly Videojuego N64_Pokemon_stadium;
-        readonly Videojuego N64_Mario_kart_64;
-        readonly Videojuego N64_Star_fox_64;
-        readonly Videojuego N64_Bnajo_kazooie;
-        readonly Videojuego N64_Super_smash_bros;
+        Videojuego N64_Mario_party,N64_Perfect_dark,N64_Donkey_kong_64,N64_Mario_tenis,N64_Doom_64,N64_Kirby_stars_64,N64_The_legend_of_zelda_majora_mask,N64_The_legend_of_zelda_ocarina_of_time,N64_Super_mario_64,N64_Paper_mario,N64_Pokemon_stadium,N64_Mario_kart_64,N64_Star_fox_64,N64_Bnajo_kazooie,N64_Super_smash_bros;
         #endregion
 
         #region Gb
-        readonly Videojuego Gb_Donkey_kong;
-        readonly Videojuego Gb_Catlevania_2_belmonts_revege;
-        readonly Videojuego Gb_Metroid_2;
-        readonly Videojuego Gb_Wario_land;
-        readonly Videojuego Gb_Pokemon_amarillo;
-        readonly Videojuego Gb_Pokemon_rojo;
-        readonly Videojuego Gb_The_legend_of_zelda_oracle_of_seasons;
-        readonly Videojuego Gb_Super_mario_land;
-        readonly Videojuego Gb_The_legend_of_zelda_links_awakening;
-        readonly Videojuego Gb_The_legend_of_zelda_oracle_of_ages;
-        readonly Videojuego Gb_Super_mario_land_2;
-        readonly Videojuego Gb_Mega_man_V;
-        readonly Videojuego Gb_Mario_tennis;
-        readonly Videojuego Gb_Kirbys_dream_land_2;
-        readonly Videojuego Gb_Final_Fantasy_Adventure;
+        Videojuego Gb_Donkey_kong,Gb_Catlevania_2_belmonts_revege,Gb_Metroid_2,Gb_Wario_land,Gb_Pokemon_amarillo,Gb_Pokemon_rojo,Gb_The_legend_of_zelda_oracle_of_seasons,Gb_Super_mario_land,Gb_The_legend_of_zelda_links_awakening,Gb_The_legend_of_zelda_oracle_of_ages,Gb_Super_mario_land_2,Gb_Mega_man_V,Gb_Mario_tennis,Gb_Kirbys_dream_land_2,Gb_Final_Fantasy_Adventure;
         #endregion
 
         #region Gba
-        readonly Videojuego Gba_Mario_y_luigi_super_satar_saga;
-        readonly Videojuego Gba_The_legend_of_zelda_minish_cap;
-        readonly Videojuego Gba_Wario_land_4;
-        readonly Videojuego Gba_Mega_Man_Zero_3;
-        readonly Videojuego Gba_Metroid_zero_mission;
-        readonly Videojuego Gba_Pokemon_esmeralda;
-        readonly Videojuego Gba_Kirby_y_el_laberinto_de_los_espejos;
-        readonly Videojuego Gba_Castlevania_Aria_of_srrow;
-        readonly Videojuego Gba_Castlevania_circle_of_the_moon;
-        readonly Videojuego Gba_Earthbound_3;
-        readonly Videojuego Gba_Super_mario_advance_4;
-        readonly Videojuego Gba_Super_mario_world;
-        readonly Videojuego Gba_Yoshis_island_remake;
-        readonly Videojuego Gba_Mega_Man_Zero;
-        readonly Videojuego Gba_Metroid_fusion;
+        Videojuego Gba_Mario_y_luigi_super_satar_saga,Gba_The_legend_of_zelda_minish_cap,Gba_Wario_land_4,Gba_Mega_Man_Zero_3,Gba_Metroid_zero_mission,Gba_Pokemon_esmeralda,Gba_Kirby_y_el_laberinto_de_los_espejos,Gba_Castlevania_Aria_of_srrow,Gba_Castlevania_circle_of_the_moon,Gba_Earthbound_3,Gba_Super_mario_advance_4,Gba_Super_mario_world,Gba_Yoshis_island_remake,Gba_Mega_Man_Zero,Gba_Metroid_fusion;
         #endregion
 
         #endregion
         #endregion
-        readonly string music;
-        int accountan = 0;
+        string music;
+        int accountan, Compra_final, Ticket_quantity = 0;
         double Compra_final_iva = 0;
-        int Compra_final = 0;
-        int Ticket_quantity = 0;
         bool filtro_nes, filtro_snes, filtro_gb, filtro_n64, filtro_gba;
         public From_NintenShop()
         {
@@ -128,11 +52,11 @@ namespace App_NintenShop
             Lista_videojuegos_carrito = new List<Consola>();
             #region inicializacion de matrizes
             #region //Consolas
-            Consolas_nes = new Consola[15];
-            Consolas_snes = new Consola[15];
-            Consolas_n64 = new Consola[15];
-            Consolas_gb = new Consola[15];
-            Consolas_gba = new Consola[15];
+            Consolas_nes = new Videojuego[15];
+            Consolas_snes = new Videojuego[15];
+            Consolas_n64 = new Videojuego[15];
+            Consolas_gb = new Videojuego[15];
+            Consolas_gba = new Videojuego[15];
             #endregion
 
             #region Videojuegos_nes
@@ -425,7 +349,27 @@ namespace App_NintenShop
 
         private void Btn_comprar_Click(object sender, EventArgs e)
         {
-            Comprar_unidad();
+            int selected_game_buy = List_juegos.SelectedIndex;
+            if (filtro_nes == true)
+            {
+                ProcesarCompra(Consolas_nes, selected_game_buy);
+            }
+            else if(filtro_gb == true)
+            {
+                ProcesarCompra(Consolas_gb, selected_game_buy);
+            }
+            else if (filtro_snes == true)
+            {
+                ProcesarCompra(Consolas_snes, selected_game_buy);
+            }
+            else if (filtro_n64 == true)
+            {
+                ProcesarCompra(Consolas_n64, selected_game_buy);
+            }
+            else
+            {
+                ProcesarCompra(Consolas_gba, selected_game_buy);
+            }
         }
 
         private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -832,123 +776,29 @@ namespace App_NintenShop
             }
         }
 
-        private void Comprar_unidad()
+        private void ProcesarCompra(Videojuego[] videojuegos, int indiceSeleccionado)
         {
-            double buy;
-            double IVA;
-            double buy_final;
-            int selected_game_buy = List_juegos.SelectedIndex;
-            if (filtro_nes == true)
+            if (indiceSeleccionado != -1)
             {
-                if (selected_game_buy != -1)
-                {
-                    Videojuego selected_game = (Videojuego)Consolas_nes[selected_game_buy];
-                    buy = selected_game.PRICE;
-                    IVA = Math.Round((buy / 1.16) * .16, 2);
-                    buy = Math.Round(buy - IVA, 2);
-                    buy_final = buy + IVA;
-                    Console.Beep();
-                    MessageBox.Show(
-                        $"NintenShop            {DateTime.Now}\n\n"
-                        + "Titulo: " + $"{selected_game.TITLE}" + "\n"
-                        + "Genero: " + $"{selected_game.GENERE}" + "\n"
-                        + "Año: " + $"{selected_game.YEAR}" + "\n"
-                        + "Precio: " + $"{selected_game.PRICE}" + "\n\n"
-                        + "Iva: " + $"${IVA}" + "\n"
-                        + "Total:" + $" ${buy}\n\n"
-                        + "Sub Total Final:" + $" ${buy_final}\n"
-                        + "Gracias por su compra.");
-                }
-            }
-            else if (filtro_gb == true)
-            {
-                if (selected_game_buy != -1)
-                {
-                    Videojuego selected_game = (Videojuego)Consolas_gb[selected_game_buy];
-                    buy = selected_game.PRICE;
-                    IVA = Math.Round((buy / 1.16) * .16, 2);
-                    buy = Math.Round(buy - IVA, 2);
-                    buy_final = buy + IVA;
-                    Console.Beep();
-                    MessageBox.Show(
-                        $"NintenShop            {DateTime.Now}\n\n"
-                        + "Titulo: " + $"{selected_game.TITLE}" + "\n"
-                        + "Genero: " + $"{selected_game.GENERE}" + "\n"
-                        + "Año: " + $"{selected_game.YEAR}" + "\n"
-                        + "Precio: " + $"{selected_game.PRICE}" + "\n\n"
-                        + "Iva: " + $"${IVA}" + "\n"
-                        + "Total:" + $" ${buy}\n\n"
-                        + "Sub Total Final:" + $" ${buy_final}\n"
-                        + "Gracias por su compra.");
-                }
-            }
-            else if (filtro_snes == true)
-            {
-                if (selected_game_buy != -1)
-                {
-                    Videojuego selected_game = (Videojuego)Consolas_snes[selected_game_buy];
-                    buy = selected_game.PRICE;
-                    IVA = Math.Round((buy / 1.16) * .16, 2);
-                    buy = Math.Round(buy - IVA, 2);
-                    buy_final = buy + IVA;
-                    Console.Beep();
-                    MessageBox.Show(
-                        $"NintenShop            {DateTime.Now}\n\n"
-                        + "Titulo: " + $"{selected_game.TITLE}" + "\n"
-                        + "Genero: " + $"{selected_game.GENERE}" + "\n"
-                        + "Año: " + $"{selected_game.YEAR}" + "\n"
-                        + "Precio: " + $"{selected_game.PRICE}" + "\n\n"
-                        + "Iva: " + $"${IVA}" + "\n"
-                        + "Total:" + $" ${buy}\n\n"
-                        + "Sub Total Final:" + $" ${buy_final}\n"
-                        + "Gracias por su compra.");
-                }
-            }
-            else if (filtro_n64 == true)
-            {
-                if (selected_game_buy != -1)
-                {
-                    Videojuego selected_game = (Videojuego)Consolas_n64[selected_game_buy];
-                    buy = selected_game.PRICE;
-                    IVA = Math.Round((buy / 1.16) * .16, 2);
-                    buy = Math.Round(buy - IVA, 2);
-                    buy_final = buy + IVA;
-                    Console.Beep();
-                    MessageBox.Show(
-                        $"NintenShop            {DateTime.Now}\n\n"
-                        + "Titulo: " + $"{selected_game.TITLE}" + "\n"
-                        + "Genero: " + $"{selected_game.GENERE}" + "\n"
-                        + "Año: " + $"{selected_game.YEAR}" + "\n"
-                        + "Precio: " + $"{selected_game.PRICE}" + "\n\n"
-                        + "Iva: " + $"${IVA}" + "\n"
-                        + "Total:" + $" ${buy}\n\n"
-                        + "Sub Total Final:" + $" ${buy_final}\n"
-                        + "Gracias por su compra.");
-                }
-            }
-            else if (filtro_gba == true)
-            {
-                if (selected_game_buy != -1)
-                {
-                    Videojuego selected_game = (Videojuego)Consolas_gba[selected_game_buy];
-                    buy = selected_game.PRICE;
-                    IVA = Math.Round((buy / 1.16) * .16, 2);
-                    buy = Math.Round(buy - IVA, 2);
-                    buy_final = buy + IVA;
-                    Console.Beep();
-                    MessageBox.Show(
-                        $"NintenShop            {DateTime.Now}\n\n"
-                        + "Titulo: " + $"{selected_game.TITLE}" + "\n"
-                        + "Genero: " + $"{selected_game.GENERE}" + "\n"
-                        + "Año: " + $"{selected_game.YEAR}" + "\n"
-                        + "Precio: " + $"{selected_game.PRICE}" + "\n\n"
-                        + "Iva: " + $"${IVA}" + "\n"
-                        + "Total:" + $" ${buy}\n\n"
-                        + "Sub Total Final:" + $" ${buy_final}\n"
-                        + "Gracias por su compra.");
-                }
+                Videojuego selected_game = videojuegos[indiceSeleccionado];
+                double buy = selected_game.PRICE;
+                double IVA = Math.Round((buy / 1.16) * .16, 2);
+                buy = Math.Round(buy - IVA, 2);
+                double buy_final = buy + IVA;
+                Console.Beep();
+                MessageBox.Show(
+                    $"NintenShop            {DateTime.Now}\n\n"
+                    + "Titulo: " + $"{selected_game.TITLE}" + "\n"
+                    + "Genero: " + $"{selected_game.GENERE}" + "\n"
+                    + "Año: " + $"{selected_game.YEAR}" + "\n"
+                    + "Precio: " + $"{selected_game.PRICE}" + "\n\n"
+                    + "Iva: " + $"${IVA}" + "\n"
+                    + "Total:" + $" ${buy}\n\n"
+                    + "Sub Total Final:" + $" ${buy_final}\n"
+                    + "Gracias por su compra.");
             }
         }
+
 
         private void Comprar_Carrito()
         {
