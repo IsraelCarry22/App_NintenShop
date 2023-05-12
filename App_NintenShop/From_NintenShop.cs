@@ -505,13 +505,7 @@ namespace App_NintenShop
                             Pic_Caratulas.Image = null;
                             break;
                     }
-                    lbl_titulo.Text = "Título: " + selected_game.TITLE + ".";
-                    lbl_genero.Text = "Género: " + selected_game.GENERE + ".";
-                    lbl_creadores.Text = "Creador(es): " + selected_game.CREATORS + ".";
-                    lbl_año.Text = "Año: " + selected_game.YEAR.ToString() + ".";
-                    lbl_consola.Text = "Consola: " + selected_game.CONSOLE + ".";
-                    lbl_precio.Text = "$" + selected_game.PRICE.ToString() + ".";
-                    lbl_bits.Text = "Bits: " + selected_game.BITS.ToString() + ".";
+                    Information_Game(Consolas_nes, selected_image);
                 }
             }
             else if (filtro_gb == true)
@@ -570,13 +564,7 @@ namespace App_NintenShop
                             Pic_Caratulas.Image = null;
                             break;
                     }
-                    lbl_titulo.Text = "Título: " + selected_game.TITLE + ".";
-                    lbl_genero.Text = "Género: " + selected_game.GENERE + ".";
-                    lbl_creadores.Text = "Creador(es): " + selected_game.CREATORS + ".";
-                    lbl_año.Text = "Año: " + selected_game.YEAR.ToString() + ".";
-                    lbl_consola.Text = "Consola: " + selected_game.CONSOLE + ".";
-                    lbl_precio.Text = "$" + selected_game.PRICE.ToString() + ".";
-                    lbl_bits.Text = "Bits: " + selected_game.BITS.ToString() + ".";
+                    Information_Game(Consolas_gb, selected_image);
                 }
             }
             else if (filtro_snes == true)
@@ -635,13 +623,7 @@ namespace App_NintenShop
                             Pic_Caratulas.Image = null;
                             break;
                     }
-                    lbl_titulo.Text = "Título: " + selected_game.TITLE + ".";
-                    lbl_genero.Text = "Género: " + selected_game.GENERE + ".";
-                    lbl_creadores.Text = "Creador(es): " + selected_game.CREATORS + ".";
-                    lbl_año.Text = "Año: " + selected_game.YEAR.ToString() + ".";
-                    lbl_consola.Text = "Consola: " + selected_game.CONSOLE + ".";
-                    lbl_precio.Text = "$" + selected_game.PRICE.ToString() + ".";
-                    lbl_bits.Text = "Bits: " + selected_game.BITS.ToString() + ".";
+                    Information_Game(Consolas_snes, selected_image);
                 }
             }
             else if (filtro_n64 == true)
@@ -700,13 +682,7 @@ namespace App_NintenShop
                             Pic_Caratulas.Image = null;
                             break;
                     }
-                    lbl_titulo.Text = "Título: " + selected_game.TITLE + ".";
-                    lbl_genero.Text = "Género: " + selected_game.GENERE + ".";
-                    lbl_creadores.Text = "Creador(es): " + selected_game.CREATORS + ".";
-                    lbl_año.Text = "Año: " + selected_game.YEAR.ToString() + ".";
-                    lbl_consola.Text = "Consola: " + selected_game.CONSOLE + ".";
-                    lbl_precio.Text = "$" + selected_game.PRICE.ToString() + ".";
-                    lbl_bits.Text = "Bits: " + selected_game.BITS.ToString() + ".";
+                    Information_Game(Consolas_n64, selected_image);
                 }
             }
             else if (filtro_gba == true)
@@ -765,13 +741,7 @@ namespace App_NintenShop
                             Pic_Caratulas.Image = null;
                             break;
                     }
-                    lbl_titulo.Text = "Título: " + selected_game.TITLE + ".";
-                    lbl_genero.Text = "Género: " + selected_game.GENERE + ".";
-                    lbl_creadores.Text = "Creador(es): " + selected_game.CREATORS + ".";
-                    lbl_año.Text = "Año: " + selected_game.YEAR.ToString() + ".";
-                    lbl_consola.Text = "Consola: " + selected_game.CONSOLE + ".";
-                    lbl_precio.Text = "$" + selected_game.PRICE.ToString() + ".";
-                    lbl_bits.Text = "Bits: " + selected_game.BITS.ToString() + ".";
+                    Information_Game(Consolas_gba, selected_image);
                 }
             }
         }
@@ -799,6 +769,17 @@ namespace App_NintenShop
             }
         }
 
+        private void Information_Game(Videojuego[] videojuegos, int selected_image)
+        {
+            Videojuego selected_game = videojuegos[selected_image];
+            lbl_titulo.Text = "Título: " + selected_game.TITLE + ".";
+            lbl_genero.Text = "Género: " + selected_game.GENERE + ".";
+            lbl_creadores.Text = "Creador(es): " + selected_game.CREATORS + ".";
+            lbl_año.Text = "Año: " + selected_game.YEAR.ToString() + ".";
+            lbl_consola.Text = "Consola: " + selected_game.CONSOLE + ".";
+            lbl_precio.Text = "$" + selected_game.PRICE.ToString() + ".";
+            lbl_bits.Text = "Bits: " + selected_game.BITS.ToString() + ".";
+        }
 
         private void Comprar_Carrito()
         {
