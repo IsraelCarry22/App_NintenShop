@@ -45,7 +45,6 @@ namespace App_NintenShop
             this.lbl_consola = new System.Windows.Forms.Label();
             this.btn_comprar = new System.Windows.Forms.Button();
             this.btn_añadir_carrito = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btm_filter_gba = new System.Windows.Forms.PictureBox();
             this.btm_filter_n64 = new System.Windows.Forms.PictureBox();
@@ -97,7 +96,7 @@ namespace App_NintenShop
             this.ayudaToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(826, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(906, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,10 +125,12 @@ namespace App_NintenShop
             // 
             this.List_juegos.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.List_juegos.FormattingEnabled = true;
+            this.List_juegos.HorizontalScrollbar = true;
             this.List_juegos.ItemHeight = 25;
-            this.List_juegos.Location = new System.Drawing.Point(8, 174);
+            this.List_juegos.Location = new System.Drawing.Point(8, 149);
             this.List_juegos.Name = "List_juegos";
-            this.List_juegos.Size = new System.Drawing.Size(318, 329);
+            this.List_juegos.ScrollAlwaysVisible = true;
+            this.List_juegos.Size = new System.Drawing.Size(347, 429);
             this.List_juegos.TabIndex = 9;
             this.List_juegos.SelectedIndexChanged += new System.EventHandler(this.List_juegos_SelectedIndexChanged);
             // 
@@ -137,7 +138,7 @@ namespace App_NintenShop
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 134);
+            this.label1.Location = new System.Drawing.Point(3, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(163, 21);
             this.label1.TabIndex = 10;
@@ -147,7 +148,7 @@ namespace App_NintenShop
             // 
             this.lbl_titulo.AutoSize = true;
             this.lbl_titulo.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_titulo.Location = new System.Drawing.Point(357, 341);
+            this.lbl_titulo.Location = new System.Drawing.Point(451, 408);
             this.lbl_titulo.Name = "lbl_titulo";
             this.lbl_titulo.Size = new System.Drawing.Size(24, 21);
             this.lbl_titulo.TabIndex = 11;
@@ -158,7 +159,7 @@ namespace App_NintenShop
             // 
             this.lbl_creadores.AutoSize = true;
             this.lbl_creadores.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_creadores.Location = new System.Drawing.Point(357, 362);
+            this.lbl_creadores.Location = new System.Drawing.Point(451, 429);
             this.lbl_creadores.Name = "lbl_creadores";
             this.lbl_creadores.Size = new System.Drawing.Size(24, 21);
             this.lbl_creadores.TabIndex = 13;
@@ -169,7 +170,7 @@ namespace App_NintenShop
             // 
             this.lbl_genero.AutoSize = true;
             this.lbl_genero.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_genero.Location = new System.Drawing.Point(357, 383);
+            this.lbl_genero.Location = new System.Drawing.Point(451, 450);
             this.lbl_genero.Name = "lbl_genero";
             this.lbl_genero.Size = new System.Drawing.Size(24, 21);
             this.lbl_genero.TabIndex = 15;
@@ -180,7 +181,7 @@ namespace App_NintenShop
             // 
             this.lbl_año.AutoSize = true;
             this.lbl_año.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_año.Location = new System.Drawing.Point(357, 404);
+            this.lbl_año.Location = new System.Drawing.Point(451, 471);
             this.lbl_año.Name = "lbl_año";
             this.lbl_año.Size = new System.Drawing.Size(24, 21);
             this.lbl_año.TabIndex = 14;
@@ -191,7 +192,7 @@ namespace App_NintenShop
             // 
             this.lbl_consola.AutoSize = true;
             this.lbl_consola.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_consola.Location = new System.Drawing.Point(357, 425);
+            this.lbl_consola.Location = new System.Drawing.Point(451, 492);
             this.lbl_consola.Name = "lbl_consola";
             this.lbl_consola.Size = new System.Drawing.Size(24, 21);
             this.lbl_consola.TabIndex = 16;
@@ -203,9 +204,9 @@ namespace App_NintenShop
             this.btn_comprar.BackColor = System.Drawing.Color.Lime;
             this.btn_comprar.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_comprar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_comprar.Location = new System.Drawing.Point(637, 481);
+            this.btn_comprar.Location = new System.Drawing.Point(623, 540);
             this.btn_comprar.Name = "btn_comprar";
-            this.btn_comprar.Size = new System.Drawing.Size(177, 37);
+            this.btn_comprar.Size = new System.Drawing.Size(271, 37);
             this.btn_comprar.TabIndex = 19;
             this.btn_comprar.Text = "Comprar";
             this.btn_comprar.UseVisualStyleBackColor = false;
@@ -216,31 +217,21 @@ namespace App_NintenShop
             this.btn_añadir_carrito.BackColor = System.Drawing.Color.Blue;
             this.btn_añadir_carrito.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_añadir_carrito.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_añadir_carrito.Location = new System.Drawing.Point(359, 481);
+            this.btn_añadir_carrito.Location = new System.Drawing.Point(371, 541);
             this.btn_añadir_carrito.Name = "btn_añadir_carrito";
-            this.btn_añadir_carrito.Size = new System.Drawing.Size(199, 37);
+            this.btn_añadir_carrito.Size = new System.Drawing.Size(246, 37);
             this.btn_añadir_carrito.TabIndex = 20;
             this.btn_añadir_carrito.Text = "Añadir al carrito";
             this.btn_añadir_carrito.UseVisualStyleBackColor = false;
             this.btn_añadir_carrito.Click += new System.EventHandler(this.Btn_añadir_carrito_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(272, 21);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Selecciona una consola para filtrar";
-            // 
             // btm_filter_gba
             // 
             this.btm_filter_gba.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btm_filter_gba.Image = global::App_NintenShop.Properties.Resources.Gba;
-            this.btm_filter_gba.Location = new System.Drawing.Point(559, 27);
+            this.btm_filter_gba.Location = new System.Drawing.Point(707, 27);
             this.btm_filter_gba.Name = "btm_filter_gba";
-            this.btm_filter_gba.Size = new System.Drawing.Size(60, 50);
+            this.btm_filter_gba.Size = new System.Drawing.Size(78, 63);
             this.btm_filter_gba.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btm_filter_gba.TabIndex = 8;
             this.btm_filter_gba.TabStop = false;
@@ -251,9 +242,9 @@ namespace App_NintenShop
             // 
             this.btm_filter_n64.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btm_filter_n64.Image = global::App_NintenShop.Properties.Resources.N64;
-            this.btm_filter_n64.Location = new System.Drawing.Point(493, 27);
+            this.btm_filter_n64.Location = new System.Drawing.Point(623, 27);
             this.btm_filter_n64.Name = "btm_filter_n64";
-            this.btm_filter_n64.Size = new System.Drawing.Size(60, 50);
+            this.btm_filter_n64.Size = new System.Drawing.Size(78, 63);
             this.btm_filter_n64.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btm_filter_n64.TabIndex = 7;
             this.btm_filter_n64.TabStop = false;
@@ -264,9 +255,9 @@ namespace App_NintenShop
             // 
             this.btm_filter_gb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btm_filter_gb.Image = global::App_NintenShop.Properties.Resources.Gb;
-            this.btm_filter_gb.Location = new System.Drawing.Point(361, 27);
+            this.btm_filter_gb.Location = new System.Drawing.Point(455, 27);
             this.btm_filter_gb.Name = "btm_filter_gb";
-            this.btm_filter_gb.Size = new System.Drawing.Size(60, 50);
+            this.btm_filter_gb.Size = new System.Drawing.Size(78, 63);
             this.btm_filter_gb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btm_filter_gb.TabIndex = 6;
             this.btm_filter_gb.TabStop = false;
@@ -277,9 +268,9 @@ namespace App_NintenShop
             // 
             this.btm_filter_snes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btm_filter_snes.Image = global::App_NintenShop.Properties.Resources.Snes;
-            this.btm_filter_snes.Location = new System.Drawing.Point(427, 27);
+            this.btm_filter_snes.Location = new System.Drawing.Point(539, 27);
             this.btm_filter_snes.Name = "btm_filter_snes";
-            this.btm_filter_snes.Size = new System.Drawing.Size(60, 50);
+            this.btm_filter_snes.Size = new System.Drawing.Size(78, 63);
             this.btm_filter_snes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btm_filter_snes.TabIndex = 5;
             this.btm_filter_snes.TabStop = false;
@@ -290,9 +281,9 @@ namespace App_NintenShop
             // 
             this.btm_filter_nes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btm_filter_nes.Image = global::App_NintenShop.Properties.Resources.Nes;
-            this.btm_filter_nes.Location = new System.Drawing.Point(295, 27);
+            this.btm_filter_nes.Location = new System.Drawing.Point(371, 27);
             this.btm_filter_nes.Name = "btm_filter_nes";
-            this.btm_filter_nes.Size = new System.Drawing.Size(60, 50);
+            this.btm_filter_nes.Size = new System.Drawing.Size(78, 63);
             this.btm_filter_nes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btm_filter_nes.TabIndex = 4;
             this.btm_filter_nes.TabStop = false;
@@ -303,9 +294,9 @@ namespace App_NintenShop
             // 
             this.btn_carrito.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_carrito.Image = global::App_NintenShop.Properties.Resources.carrito;
-            this.btn_carrito.Location = new System.Drawing.Point(697, 27);
+            this.btn_carrito.Location = new System.Drawing.Point(791, 27);
             this.btn_carrito.Name = "btn_carrito";
-            this.btn_carrito.Size = new System.Drawing.Size(46, 36);
+            this.btn_carrito.Size = new System.Drawing.Size(55, 47);
             this.btn_carrito.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btn_carrito.TabIndex = 2;
             this.btn_carrito.TabStop = false;
@@ -316,9 +307,9 @@ namespace App_NintenShop
             // 
             this.Pic_Caratulas.BackColor = System.Drawing.Color.Gray;
             this.Pic_Caratulas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Pic_Caratulas.Location = new System.Drawing.Point(361, 101);
+            this.Pic_Caratulas.Location = new System.Drawing.Point(455, 96);
             this.Pic_Caratulas.Name = "Pic_Caratulas";
-            this.Pic_Caratulas.Size = new System.Drawing.Size(346, 237);
+            this.Pic_Caratulas.Size = new System.Drawing.Size(391, 309);
             this.Pic_Caratulas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Pic_Caratulas.TabIndex = 12;
             this.Pic_Caratulas.TabStop = false;
@@ -326,9 +317,9 @@ namespace App_NintenShop
             // pictureBox2
             // 
             this.pictureBox2.Image = global::App_NintenShop.Properties.Resources.logo2;
-            this.pictureBox2.Location = new System.Drawing.Point(134, 27);
+            this.pictureBox2.Location = new System.Drawing.Point(181, 27);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(127, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(177, 63);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -336,9 +327,9 @@ namespace App_NintenShop
             // pictureBox1
             // 
             this.pictureBox1.Image = global::App_NintenShop.Properties.Resources.logo1;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 27);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(177, 63);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -349,7 +340,7 @@ namespace App_NintenShop
             this.lbl_precio.BackColor = System.Drawing.Color.White;
             this.lbl_precio.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_precio.ForeColor = System.Drawing.Color.Green;
-            this.lbl_precio.Location = new System.Drawing.Point(713, 310);
+            this.lbl_precio.Location = new System.Drawing.Point(387, 360);
             this.lbl_precio.Name = "lbl_precio";
             this.lbl_precio.Size = new System.Drawing.Size(30, 28);
             this.lbl_precio.TabIndex = 24;
@@ -360,7 +351,7 @@ namespace App_NintenShop
             // 
             this.lbl_bits.AutoSize = true;
             this.lbl_bits.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_bits.Location = new System.Drawing.Point(357, 448);
+            this.lbl_bits.Location = new System.Drawing.Point(451, 515);
             this.lbl_bits.Name = "lbl_bits";
             this.lbl_bits.Size = new System.Drawing.Size(24, 21);
             this.lbl_bits.TabIndex = 25;
@@ -371,7 +362,7 @@ namespace App_NintenShop
             // 
             this.lbl_contador_carrito.AutoSize = true;
             this.lbl_contador_carrito.Font = new System.Drawing.Font("Microsoft YaHei UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_contador_carrito.Location = new System.Drawing.Point(749, 27);
+            this.lbl_contador_carrito.Location = new System.Drawing.Point(852, 51);
             this.lbl_contador_carrito.Name = "lbl_contador_carrito";
             this.lbl_contador_carrito.Size = new System.Drawing.Size(24, 23);
             this.lbl_contador_carrito.TabIndex = 28;
@@ -390,9 +381,10 @@ namespace App_NintenShop
             this.Panel_Carrito.Controls.Add(this.label4);
             this.Panel_Carrito.Controls.Add(this.List_carrito);
             this.Panel_Carrito.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel_Carrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Panel_Carrito.Location = new System.Drawing.Point(0, 24);
             this.Panel_Carrito.Name = "Panel_Carrito";
-            this.Panel_Carrito.Size = new System.Drawing.Size(826, 502);
+            this.Panel_Carrito.Size = new System.Drawing.Size(906, 564);
             this.Panel_Carrito.TabIndex = 29;
             this.Panel_Carrito.Visible = false;
             // 
@@ -406,7 +398,7 @@ namespace App_NintenShop
             this.Panel_Ayuda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Ayuda.Location = new System.Drawing.Point(0, 0);
             this.Panel_Ayuda.Name = "Panel_Ayuda";
-            this.Panel_Ayuda.Size = new System.Drawing.Size(826, 502);
+            this.Panel_Ayuda.Size = new System.Drawing.Size(906, 564);
             this.Panel_Ayuda.TabIndex = 8;
             // 
             // label7
@@ -427,7 +419,7 @@ namespace App_NintenShop
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(38, 122);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(735, 192);
+            this.label3.Size = new System.Drawing.Size(808, 192);
             this.label3.TabIndex = 2;
             this.label3.Text = resources.GetString("label3.Text");
             // 
@@ -435,9 +427,9 @@ namespace App_NintenShop
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox4.Image = global::App_NintenShop.Properties.Resources.logo2;
-            this.pictureBox4.Location = new System.Drawing.Point(403, 30);
+            this.pictureBox4.Location = new System.Drawing.Point(449, 30);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(216, 68);
+            this.pictureBox4.Size = new System.Drawing.Size(233, 68);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
@@ -446,9 +438,9 @@ namespace App_NintenShop
             // 
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pictureBox3.Image = global::App_NintenShop.Properties.Resources.logo1;
-            this.pictureBox3.Location = new System.Drawing.Point(187, 30);
+            this.pictureBox3.Location = new System.Drawing.Point(216, 30);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(216, 68);
+            this.pictureBox3.Size = new System.Drawing.Size(233, 68);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -458,9 +450,9 @@ namespace App_NintenShop
             this.Btn_imprimir_carrito.BackColor = System.Drawing.Color.Blue;
             this.Btn_imprimir_carrito.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_imprimir_carrito.ForeColor = System.Drawing.Color.Transparent;
-            this.Btn_imprimir_carrito.Location = new System.Drawing.Point(592, 431);
+            this.Btn_imprimir_carrito.Location = new System.Drawing.Point(684, 517);
             this.Btn_imprimir_carrito.Name = "Btn_imprimir_carrito";
-            this.Btn_imprimir_carrito.Size = new System.Drawing.Size(181, 44);
+            this.Btn_imprimir_carrito.Size = new System.Drawing.Size(210, 37);
             this.Btn_imprimir_carrito.TabIndex = 7;
             this.Btn_imprimir_carrito.Text = "Imprimir recibo";
             this.Btn_imprimir_carrito.UseVisualStyleBackColor = false;
@@ -471,9 +463,9 @@ namespace App_NintenShop
             this.btn_eliminar_carrito.BackColor = System.Drawing.Color.Red;
             this.btn_eliminar_carrito.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_eliminar_carrito.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_eliminar_carrito.Location = new System.Drawing.Point(637, 380);
+            this.btn_eliminar_carrito.Location = new System.Drawing.Point(468, 517);
             this.btn_eliminar_carrito.Name = "btn_eliminar_carrito";
-            this.btn_eliminar_carrito.Size = new System.Drawing.Size(136, 32);
+            this.btn_eliminar_carrito.Size = new System.Drawing.Size(210, 37);
             this.btn_eliminar_carrito.TabIndex = 6;
             this.btn_eliminar_carrito.Text = "Eliminar";
             this.btn_eliminar_carrito.UseVisualStyleBackColor = false;
@@ -482,41 +474,41 @@ namespace App_NintenShop
             // lbl_compra_total_carrito
             // 
             this.lbl_compra_total_carrito.AutoSize = true;
-            this.lbl_compra_total_carrito.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_compra_total_carrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_compra_total_carrito.ForeColor = System.Drawing.Color.Green;
-            this.lbl_compra_total_carrito.Location = new System.Drawing.Point(177, 444);
+            this.lbl_compra_total_carrito.Location = new System.Drawing.Point(133, 513);
             this.lbl_compra_total_carrito.Name = "lbl_compra_total_carrito";
-            this.lbl_compra_total_carrito.Size = new System.Drawing.Size(34, 31);
+            this.lbl_compra_total_carrito.Size = new System.Drawing.Size(37, 37);
             this.lbl_compra_total_carrito.TabIndex = 5;
             this.lbl_compra_total_carrito.Text = "--";
             // 
             // llbl_compra_iva_carrito
             // 
             this.llbl_compra_iva_carrito.AutoSize = true;
-            this.llbl_compra_iva_carrito.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llbl_compra_iva_carrito.Location = new System.Drawing.Point(178, 401);
+            this.llbl_compra_iva_carrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llbl_compra_iva_carrito.Location = new System.Drawing.Point(227, 438);
             this.llbl_compra_iva_carrito.Name = "llbl_compra_iva_carrito";
-            this.llbl_compra_iva_carrito.Size = new System.Drawing.Size(28, 25);
+            this.llbl_compra_iva_carrito.Size = new System.Drawing.Size(37, 37);
             this.llbl_compra_iva_carrito.TabIndex = 4;
             this.llbl_compra_iva_carrito.Text = "--";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(29, 401);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(29, 438);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 25);
+            this.label6.Size = new System.Drawing.Size(192, 37);
             this.label6.TabIndex = 3;
             this.label6.Text = "Total de Iva:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(28, 444);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(29, 513);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 31);
+            this.label5.Size = new System.Drawing.Size(98, 37);
             this.label5.TabIndex = 2;
             this.label5.Text = "Total:";
             // 
@@ -524,7 +516,7 @@ namespace App_NintenShop
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 13);
+            this.label4.Location = new System.Drawing.Point(29, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(177, 41);
             this.label4.TabIndex = 1;
@@ -534,12 +526,11 @@ namespace App_NintenShop
             // 
             this.List_carrito.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.List_carrito.FormattingEnabled = true;
-            this.List_carrito.HorizontalScrollbar = true;
             this.List_carrito.ItemHeight = 25;
             this.List_carrito.Location = new System.Drawing.Point(32, 71);
             this.List_carrito.Name = "List_carrito";
             this.List_carrito.ScrollAlwaysVisible = true;
-            this.List_carrito.Size = new System.Drawing.Size(741, 279);
+            this.List_carrito.Size = new System.Drawing.Size(844, 354);
             this.List_carrito.TabIndex = 0;
             // 
             // From_NintenShop
@@ -547,12 +538,11 @@ namespace App_NintenShop
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(826, 526);
+            this.ClientSize = new System.Drawing.Size(906, 588);
             this.Controls.Add(this.Panel_Carrito);
             this.Controls.Add(this.lbl_contador_carrito);
             this.Controls.Add(this.lbl_bits);
             this.Controls.Add(this.lbl_precio);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_añadir_carrito);
             this.Controls.Add(this.btn_comprar);
             this.Controls.Add(this.lbl_consola);
@@ -621,7 +611,6 @@ namespace App_NintenShop
         private System.Windows.Forms.Label lbl_consola;
         private System.Windows.Forms.Button btn_comprar;
         private System.Windows.Forms.Button btn_añadir_carrito;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lbl_precio;
         private System.Windows.Forms.Label lbl_bits;

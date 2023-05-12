@@ -213,7 +213,7 @@ namespace App_NintenShop
             #endregion
             #endregion
             #region booleanos
-            Filter_Nes = false;
+            Filter_Nes = true;
             Filter_Snes = false;
             Filter_Gb = false;
             Filter_N64 = false;
