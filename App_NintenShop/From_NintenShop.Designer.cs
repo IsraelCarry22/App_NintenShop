@@ -419,9 +419,10 @@ namespace App_NintenShop
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(38, 122);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(808, 192);
+            this.label3.Size = new System.Drawing.Size(808, 151);
             this.label3.TabIndex = 2;
             this.label3.Text = resources.GetString("label3.Text");
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox4
             // 
