@@ -9,29 +9,13 @@ namespace App_NintenShop
 {
 	public partial class From_NintenShop : Form
 	{
-        #region Arreglos y lista
-        #region Nintendo
         Videojuego[] Consoles_Nes,Consoles_Snes,Consoles_N64,Consoles_Gb,Consoles_Gba;
         List<Videojuego> Cart_Video_Games_List;
-        #endregion
-        #region consolas
-        #region Nes
         Videojuego Nes_Super_mario_bros,Nes_Super_mario_bros_3,Nes_Mega_man_1,Nes_Mega_man_2,Nes_Metroid,Nes_Kirby_adventure,Nes_The_legend_of_zelda,Nes_Castlevania,Nes_Castlevania_3,Nes_Kid_ikarus,Nes_Earthbound,Nes_Bomberman,Nes_Pounch_out,Nes_Contra,Nes_Battletoads;
-        #endregion
-        #region Snes
         Videojuego Snes_Super_mario_word,Snes_Crono_triger,Snes_Street_fighter_3,Snes_Super_mario_kart,Snes_Mega_man_x,Snes_Kirby_super_star,Snes_The_legend_of_zelda_a_link_to_the_past,Snes_Super_Castlevania_4,Snes_Super_metroid,Snes_Donkey_Kong_country,Snes_Earthbound_2,Snes_Super_Bomberman,Snes_Yoshis_island,Snes_FZero,Snes_Super_gouls_n_ghost;
-        #endregion
-        #region N64
         Videojuego N64_Mario_party,N64_Perfect_dark,N64_Donkey_kong_64,N64_Mario_tenis,N64_Doom_64,N64_Kirby_stars_64,N64_The_legend_of_zelda_majora_mask,N64_The_legend_of_zelda_ocarina_of_time,N64_Super_mario_64,N64_Paper_mario,N64_Pokemon_stadium,N64_Mario_kart_64,N64_Star_fox_64,N64_Bnajo_kazooie,N64_Super_smash_bros;
-        #endregion
-        #region Gb
         Videojuego Gb_Donkey_kong,Gb_Catlevania_2_belmonts_revege,Gb_Metroid_2,Gb_Wario_land,Gb_Pokemon_amarillo,Gb_Pokemon_rojo,Gb_The_legend_of_zelda_oracle_of_seasons,Gb_Super_mario_land,Gb_The_legend_of_zelda_links_awakening,Gb_The_legend_of_zelda_oracle_of_ages,Gb_Super_mario_land_2,Gb_Mega_man_V,Gb_Mario_tennis,Gb_Kirbys_dream_land_2,Gb_Final_Fantasy_Adventure;
-        #endregion
-        #region Gba
         Videojuego Gba_Mario_y_luigi_super_satar_saga,Gba_The_legend_of_zelda_minish_cap,Gba_Wario_land_4,Gba_Mega_Man_Zero_3,Gba_Metroid_zero_mission,Gba_Pokemon_esmeralda,Gba_Kirby_y_el_laberinto_de_los_espejos,Gba_Castlevania_Aria_of_srrow,Gba_Castlevania_circle_of_the_moon,Gba_Earthbound_3,Gba_Super_mario_advance_4,Gba_Super_mario_world,Gba_Yoshis_island_remake,Gba_Mega_Man_Zero,Gba_Metroid_fusion;
-        #endregion
-        #endregion
-        #endregion
         int Accountan, Final_purchase, Ticket_quantity = 0;
         double Final_purchase_with_Iva = 0;
         bool Filter_Nes, Filter_Snes, Filter_Gb, Filter_N64, Filter_Gba;
@@ -43,15 +27,11 @@ namespace App_NintenShop
             SoundPlayer player = new SoundPlayer(Music);
             player.PlayLooping();
             Cart_Video_Games_List = new List<Videojuego>();
-            #region inicializacion de matrizes
-            #region //Consolas
             Consoles_Nes = new Videojuego[15];
             Consoles_Gb = new Videojuego[15];
             Consoles_Snes = new Videojuego[15];
             Consoles_N64 = new Videojuego[15];
             Consoles_Gba = new Videojuego[15];
-            #endregion
-            #region Videojuegos_nes
             Nes_Super_mario_bros = new Videojuego("Super Mario Bros", "Plataformas", "Shigeru Miyamoto", 30, "NES", 1985, 8, 1);
             Consoles_Nes[0] = Nes_Super_mario_bros;
             Nes_Super_mario_bros_3 = new Videojuego("Super Mario Bros 3", "Plataformas", "Shigeru Miyamoto", 40, "NES", 1988, 8, 1);
@@ -82,8 +62,6 @@ namespace App_NintenShop
             Consoles_Nes[13] = Nes_Contra;
             Nes_Battletoads = new Videojuego("Battletoads", "Plataformas", "Rare Ltd.", 60, "NES", 1991, 8, 1);
             Consoles_Nes[14] = Nes_Battletoads;
-            #endregion
-            #region Videojuegos_snes
             Snes_Super_mario_word = new Videojuego("Super Mario World", "Plataformas", "Shigeru Miyamoto", 50, "SNES", 1990, 16, 1);
             Consoles_Snes[0] = Snes_Super_mario_word;
             Snes_Crono_triger = new Videojuego("Chrono Trigger", "RPG", "Yuji H, Akira Toriyama y Hironobu S", 200, "SNES", 1995, 16, 1);
@@ -114,8 +92,6 @@ namespace App_NintenShop
             Consoles_Snes[13] = Snes_FZero;
             Snes_Super_gouls_n_ghost = new Videojuego("Super Ghouls 'n Ghosts", "Plataformas", "Capcom", 60, "SNES", 1991, 16, 1);
             Consoles_Snes[14] = Snes_Super_gouls_n_ghost;
-            #endregion
-            #region Videojuegos_n64
             N64_Mario_party = new Videojuego("Mario Party", "Party", "Hudson Soft", 30, "N64", 1998, 64, 1);
             Consoles_N64[0] = N64_Mario_party;
             N64_Perfect_dark = new Videojuego("Perfect Dark", "First-person shooter", "Rare", 30, "N64", 2000, 64, 1);
@@ -146,8 +122,6 @@ namespace App_NintenShop
             Consoles_N64[13] = N64_Bnajo_kazooie;
             N64_Super_smash_bros = new Videojuego("Super Smash Bros", "Lucha", "Masahiro Sakurai", 45, "Nintendo 64", 1999, 64, 1);
             Consoles_N64[14] = N64_Super_smash_bros;
-            #endregion
-            #region Videojuegos_gb
             Gb_Donkey_kong = new Videojuego("Donkey Kong", "Plataformas", "Nintendo R&D1", 20, "Game Boy", 1994, 8, 1);
             Consoles_Gb[0] = Gb_Donkey_kong;
             Gb_Catlevania_2_belmonts_revege = new Videojuego("Castlevania II: Belmont's Revenge", "Aventura/Plataformas", "Konami", 12, "Game Boy", 1991, 8, 1);
@@ -178,8 +152,6 @@ namespace App_NintenShop
             Consoles_Gb[13] = Gb_Kirbys_dream_land_2;
             Gb_Final_Fantasy_Adventure = new Videojuego("Final Fantasy Adventure", "Rol", "Koichi Ishii", 30, "Game Boy", 1991, 8, 1);
             Consoles_Gb[14] = Gb_Final_Fantasy_Adventure;
-            #endregion
-            #region Videojuegos_gba
             Gba_Mario_y_luigi_super_satar_saga = new Videojuego("Mario & Luigi: Superstar Saga", "RPG", "AlphaDream", 40, "GBA", 2003, 32, 1);
             Consoles_Gba[0] = Gba_Mario_y_luigi_super_satar_saga;
             Gba_The_legend_of_zelda_minish_cap = new Videojuego("The Legend of Zelda: The Minish Cap", "Acción-aventura", "Capcom", 40, "GBA", 2004, 32, 1);
@@ -210,15 +182,11 @@ namespace App_NintenShop
             Consoles_Gba[13] = Gba_Mega_Man_Zero;
             Gba_Metroid_fusion = new Videojuego("Metroid Fusion", "Acción, aventura", "Nintendo R&D1", 30, "GBA", 2002, 32, 1);
             Consoles_Gba[14] = Gba_Metroid_fusion;
-            #endregion
-            #endregion
-            #region booleanos
             Filter_Nes = true;
             Filter_Snes = false;
             Filter_Gb = false;
             Filter_N64 = false;
             Filter_Gba = false;
-            #endregion
         }
         public void Btm_filter_nes_Click(object sender, EventArgs e)
 		{
@@ -419,7 +387,20 @@ namespace App_NintenShop
 
         private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
         {
-            Remove_Item_From_Cart();
+            if (List_carrito.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            int Selected_Index = List_carrito.SelectedIndices[0];
+            Videojuego Deleted_Video_game = Cart_Video_Games_List[Selected_Index];
+            Final_purchase -= (Deleted_Video_game.PRICE);
+            Final_purchase_with_Iva -= Math.Round((Deleted_Video_game.PRICE * .16), 2);
+            List_carrito.Items.RemoveAt(Selected_Index);
+            Cart_Video_Games_List.RemoveAt(Selected_Index);
+            Accountan -= 1;
+            llbl_compra_iva_carrito.Text = $"${Math.Round((Final_purchase * .16), 2).ToString()}" + ".";
+            lbl_compra_total_carrito.Text = $"${Final_purchase.ToString()}" + ".";
+            lbl_contador_carrito.Text = Accountan.ToString();
         }
 
         private void Btn_imprimir_carrito_Click(object sender, EventArgs e)
@@ -544,24 +525,6 @@ namespace App_NintenShop
                 llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva.ToString()}" + ".";
                 lbl_compra_total_carrito.Text = $"${Final_purchase.ToString()}" + ".";
             }
-        }
-
-        private void Remove_Item_From_Cart()
-        {
-            if (List_carrito.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            int Selected_Index = List_carrito.SelectedIndices[0];
-            Videojuego Deleted_Video_game = Cart_Video_Games_List[Selected_Index];
-            Final_purchase -= (Deleted_Video_game.PRICE);
-            Final_purchase_with_Iva -= Math.Round((Deleted_Video_game.PRICE * .16), 2);
-            List_carrito.Items.RemoveAt(Selected_Index);
-            Cart_Video_Games_List.RemoveAt(Selected_Index);
-            Accountan -= 1;
-            llbl_compra_iva_carrito.Text = $"${Math.Round((Final_purchase * .16), 2).ToString()}" + ".";
-            lbl_compra_total_carrito.Text = $"${Final_purchase.ToString()}" + ".";
-            lbl_contador_carrito.Text = Accountan.ToString();
         }
 
         private void Change_Game_Image(string Video_Game_Name)
