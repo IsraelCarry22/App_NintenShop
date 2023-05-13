@@ -12,7 +12,7 @@ namespace App_NintenShop
         #region Arreglos y lista
         #region Nintendo
         Videojuego[] Consoles_Nes,Consoles_Snes,Consoles_N64,Consoles_Gb,Consoles_Gba;
-        List<Consola> Cart_Video_Games_List;
+        List<Videojuego> Cart_Video_Games_List;
         #endregion
         #region consolas
         #region Nes
@@ -42,7 +42,7 @@ namespace App_NintenShop
             string Music = @"C:\Users\Israe\Documents\Trabajos de la Universidad\personal\App_NintenShop\App_NintenShop\Resources\NintenShop.wav";
             SoundPlayer player = new SoundPlayer(Music);
             player.PlayLooping();
-            Cart_Video_Games_List = new List<Consola>();
+            Cart_Video_Games_List = new List<Videojuego>();
             #region inicializacion de matrizes
             #region //Consolas
             Consoles_Nes = new Videojuego[15];
@@ -340,27 +340,27 @@ namespace App_NintenShop
 
                 if (Filter_Nes == true)
                 {
-                    Selected_Game = (Videojuego)Consoles_Nes[Selected_Index];
+                    Selected_Game = Consoles_Nes[Selected_Index];
                     Information_Game(Consoles_Nes, Selected_Index);
                 }
                 else if (Filter_Gb == true)
                 {
-                    Selected_Game = (Videojuego)Consoles_Gb[Selected_Index];
+                    Selected_Game = Consoles_Gb[Selected_Index];
                     Information_Game(Consoles_Gb, Selected_Index);
                 }
                 else if (Filter_Snes == true)
                 {
-                    Selected_Game = (Videojuego)Consoles_Snes[Selected_Index];
+                    Selected_Game = Consoles_Snes[Selected_Index];
                     Information_Game(Consoles_Snes, Selected_Index);
                 }
                 else if (Filter_N64 == true)
                 {
-                    Selected_Game = (Videojuego)Consoles_N64[Selected_Index];
+                    Selected_Game = Consoles_N64[Selected_Index];
                     Information_Game(Consoles_N64, Selected_Index);
                 }
                 else
                 {
-                    Selected_Game = (Videojuego)Consoles_Gba[Selected_Index];
+                    Selected_Game = Consoles_Gba[Selected_Index];
                     Information_Game(Consoles_Gba, Selected_Index);
                 }
                 if (Selected_Game != null)
@@ -467,30 +467,31 @@ namespace App_NintenShop
         private void Btn_añadir_carrito_Click(object sender, EventArgs e)
         {
             int Selected_Game_Buy = List_juegos.SelectedIndex;
+            Videojuego Selected_Game = null;
             if (Filter_Nes == true)
             {
-                Videojuego Selected_Game = (Videojuego)Consoles_Nes[Selected_Game_Buy];
+                 Selected_Game = Consoles_Nes[Selected_Game_Buy];
                 Add_Cart_Item(Selected_Game);
             }
             else if (Filter_Gb == true)
             {
-                Videojuego selected_game = (Videojuego)Consoles_Gb[Selected_Game_Buy];
-                Add_Cart_Item(selected_game);
+                Selected_Game = Consoles_Gb[Selected_Game_Buy];
+                Add_Cart_Item(Selected_Game);
             }
             else if (Filter_Snes == true)
             {
-                Videojuego selected_game = (Videojuego)Consoles_Snes[Selected_Game_Buy];
-                Add_Cart_Item(selected_game);
+                Selected_Game = Consoles_Snes[Selected_Game_Buy];
+                Add_Cart_Item(Selected_Game);
             }
             else if (Filter_N64 == true)
             {
-                Videojuego selected_game = (Videojuego)Consoles_N64[Selected_Game_Buy];
-                Add_Cart_Item(selected_game);
+                Selected_Game = Consoles_N64[Selected_Game_Buy];
+                Add_Cart_Item(Selected_Game);
             }
             else
             {
-                Videojuego selected_game = (Videojuego)Consoles_Gba[Selected_Game_Buy];
-                Add_Cart_Item(selected_game);
+                Selected_Game = Consoles_Gba[Selected_Game_Buy];
+                Add_Cart_Item(Selected_Game);
             }
         }
 
@@ -539,8 +540,8 @@ namespace App_NintenShop
                 Final_purchase += Game.PRICE;
                 Final_purchase_with_Iva = Math.Round((Final_purchase * 0.16), 2);
                 Console.Beep();
-                Consola Add_Console = Cart_Video_Games_List.Last();
-                Videojuego Added_video_Game = (Videojuego)Add_Console;
+                Videojuego Add_Console = Cart_Video_Games_List.Last();
+                Videojuego Added_video_Game = Add_Console;
                 List_carrito.Items.Add(Added_video_Game.ToString());
                 llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva.ToString()}" + ".";
                 lbl_compra_total_carrito.Text = $"${Final_purchase.ToString()}" + ".";
@@ -554,7 +555,7 @@ namespace App_NintenShop
                 return;
             }
             int Selected_Index = List_carrito.SelectedIndices[0];
-            Videojuego Deleted_Video_game = (Videojuego)Cart_Video_Games_List[Selected_Index];
+            Videojuego Deleted_Video_game = Cart_Video_Games_List[Selected_Index];
             Final_purchase -= (Deleted_Video_game.PRICE);
             Final_purchase_with_Iva -= Math.Round((Deleted_Video_game.PRICE * .16), 2);
             List_carrito.Items.RemoveAt(Selected_Index);
