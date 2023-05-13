@@ -333,11 +333,9 @@ namespace App_NintenShop
         private void List_juegos_SelectedIndexChanged(object sender, EventArgs e)
         {
             int Selected_Index = List_juegos.SelectedIndex;
-
             if (Selected_Index != -1)
             {
                 Videojuego Selected_Game = null;
-
                 if (Filter_Nes == true)
                 {
                     Selected_Game = Consoles_Nes[Selected_Index];
