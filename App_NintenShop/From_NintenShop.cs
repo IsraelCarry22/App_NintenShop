@@ -11,11 +11,13 @@ namespace App_NintenShop
 	{
         Videojuego[] Consoles_Nes,Consoles_Snes,Consoles_N64,Consoles_Gb,Consoles_Gba;
         List<Videojuego> Cart_Video_Games_List;
+        #region
         Videojuego Nes_Super_mario_bros,Nes_Super_mario_bros_3,Nes_Mega_man_1,Nes_Mega_man_2,Nes_Metroid,Nes_Kirby_adventure,Nes_The_legend_of_zelda,Nes_Castlevania,Nes_Castlevania_3,Nes_Kid_ikarus,Nes_Earthbound,Nes_Bomberman,Nes_Pounch_out,Nes_Contra,Nes_Battletoads;
         Videojuego Snes_Super_mario_word,Snes_Crono_triger,Snes_Street_fighter_3,Snes_Super_mario_kart,Snes_Mega_man_x,Snes_Kirby_super_star,Snes_The_legend_of_zelda_a_link_to_the_past,Snes_Super_Castlevania_4,Snes_Super_metroid,Snes_Donkey_Kong_country,Snes_Earthbound_2,Snes_Super_Bomberman,Snes_Yoshis_island,Snes_FZero,Snes_Super_gouls_n_ghost;
         Videojuego N64_Mario_party,N64_Perfect_dark,N64_Donkey_kong_64,N64_Mario_tenis,N64_Doom_64,N64_Kirby_stars_64,N64_The_legend_of_zelda_majora_mask,N64_The_legend_of_zelda_ocarina_of_time,N64_Super_mario_64,N64_Paper_mario,N64_Pokemon_stadium,N64_Mario_kart_64,N64_Star_fox_64,N64_Bnajo_kazooie,N64_Super_smash_bros;
         Videojuego Gb_Donkey_kong,Gb_Catlevania_2_belmonts_revege,Gb_Metroid_2,Gb_Wario_land,Gb_Pokemon_amarillo,Gb_Pokemon_rojo,Gb_The_legend_of_zelda_oracle_of_seasons,Gb_Super_mario_land,Gb_The_legend_of_zelda_links_awakening,Gb_The_legend_of_zelda_oracle_of_ages,Gb_Super_mario_land_2,Gb_Mega_man_V,Gb_Mario_tennis,Gb_Kirbys_dream_land_2,Gb_Final_Fantasy_Adventure;
         Videojuego Gba_Mario_y_luigi_super_satar_saga,Gba_The_legend_of_zelda_minish_cap,Gba_Wario_land_4,Gba_Mega_Man_Zero_3,Gba_Metroid_zero_mission,Gba_Pokemon_esmeralda,Gba_Kirby_y_el_laberinto_de_los_espejos,Gba_Castlevania_Aria_of_srrow,Gba_Castlevania_circle_of_the_moon,Gba_Earthbound_3,Gba_Super_mario_advance_4,Gba_Super_mario_world,Gba_Yoshis_island_remake,Gba_Mega_Man_Zero,Gba_Metroid_fusion;
+        #endregion
         int Accountan, Final_purchase, Ticket_quantity = 0;
         double Final_purchase_with_Iva = 0;
         bool Filter_Nes, Filter_Snes, Filter_Gb, Filter_N64, Filter_Gba;
@@ -195,19 +197,7 @@ namespace App_NintenShop
             Filter_Gb = false;
             Filter_N64 = false;
             Filter_Gba = false;
-            if (Filter_Nes != false)
-            {
-                List_juegos.Items.Clear();
-                foreach (Consola Consoles in Consoles_Nes)
-                {
-                    if (Consoles is Videojuego Video_Game)
-                    {
-                        List_juegos.Items.Add(Video_Game.TITLE);
-                    }
-                }
-                List_juegos.SelectedIndex = 0;
-                return;
-            }
+            Filter_Games(Filter_Nes, Consoles_Nes);
         }
 
         public void Btm_filter_gb_Click(object sender, EventArgs e)
@@ -217,19 +207,7 @@ namespace App_NintenShop
             Filter_Gb = true;
             Filter_N64 = false;
             Filter_Gba = false;
-            if (Filter_Gb != false)
-            {
-                List_juegos.Items.Clear();
-                foreach (Consola Consoles in Consoles_Gb)
-                {
-                    if (Consoles is Videojuego Video_Game)
-                    {
-                        List_juegos.Items.Add(Video_Game.TITLE);
-                    }
-                }
-                List_juegos.SelectedIndex = 0;
-                return;
-            }
+            Filter_Games(Filter_Gb, Consoles_Gb);
         }
 
         public void Btm_filter_snes_Click(object sender, EventArgs e)
@@ -239,19 +217,7 @@ namespace App_NintenShop
             Filter_Gb = false;
             Filter_N64 = false;
             Filter_Gba = false;
-            if (Filter_Snes != false)
-            {
-                List_juegos.Items.Clear();
-                foreach (Consola Consoles in Consoles_Snes)
-                {
-                    if (Consoles is Videojuego Video_Game)
-                    {
-                        List_juegos.Items.Add(Video_Game.TITLE);
-                    }
-                }
-                List_juegos.SelectedIndex = 0;
-                return;
-            }
+            Filter_Games(Filter_Snes, Consoles_Snes);
         }
 
         public void Btm_filter_n64_Click(object sender, EventArgs e)
@@ -261,19 +227,7 @@ namespace App_NintenShop
             Filter_Gb = false;
             Filter_N64 = true;
             Filter_Gba = false;
-            if (Filter_N64 != false)
-            {
-                List_juegos.Items.Clear();
-                foreach (Consola Consoles in Consoles_N64)
-                {
-                    if (Consoles is Videojuego Video_Game)
-                    {
-                        List_juegos.Items.Add(Video_Game.TITLE);
-                    }
-                }
-                List_juegos.SelectedIndex = 0;
-                return;
-            }
+            Filter_Games(Filter_N64, Consoles_N64);
         }
 
         public void Btm_filter_gba_Click(object sender, EventArgs e)
@@ -283,19 +237,7 @@ namespace App_NintenShop
             Filter_Gb = false;
             Filter_N64 = false;
             Filter_Gba = true;
-            if (Filter_Gba != false)
-            {
-                List_juegos.Items.Clear();
-                foreach (Consola Consoles in Consoles_Gba)
-                {
-                    if (Consoles is Videojuego Video_Game)
-                    {
-                        List_juegos.Items.Add(Video_Game.TITLE);
-                    }
-                }
-                List_juegos.SelectedIndex = 0;
-                return;
-            }
+            Filter_Games(Filter_Gba, Consoles_Gba);
         }
 
         private void List_juegos_SelectedIndexChanged(object sender, EventArgs e)
@@ -471,6 +413,23 @@ namespace App_NintenShop
             {
                 Selected_Game = Consoles_Gba[Selected_Game_Buy];
                 Add_Cart_Item(Selected_Game);
+            }
+        }
+
+        private void Filter_Games(bool Filter,Videojuego[] Video_Games)
+        {
+            if (Filter != false)
+            {
+                List_juegos.Items.Clear();
+                foreach (Consola Consoles in Video_Games)
+                {
+                    if (Consoles is Videojuego Video_Game)
+                    {
+                        List_juegos.Items.Add(Video_Game.TITLE);
+                    }
+                }
+                List_juegos.SelectedIndex = 0;
+                return;
             }
         }
 
