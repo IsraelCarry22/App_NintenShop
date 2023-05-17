@@ -391,7 +391,7 @@ namespace App_NintenShop
             Videojuego Selected_Game = null;
             if (Filter_Nes == true)
             {
-                 Selected_Game = Consoles_Nes[Selected_Game_Buy];
+                Selected_Game = Consoles_Nes[Selected_Game_Buy];
                 Add_Cart_Item(Selected_Game);
             }
             else if (Filter_Gb == true)
@@ -479,8 +479,7 @@ namespace App_NintenShop
                 Final_purchase_with_Iva = Math.Round((Final_purchase * 0.16), 2);
                 Console.Beep();
                 Videojuego Add_Console = Cart_Video_Games_List.Last();
-                Videojuego Added_video_Game = Add_Console;
-                List_carrito.Items.Add(Added_video_Game.ToString());
+                List_carrito.Items.Add(Add_Console.ToString());
                 llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva.ToString()}" + ".";
                 lbl_compra_total_carrito.Text = $"${Final_purchase.ToString()}" + ".";
             }
