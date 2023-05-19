@@ -64,16 +64,16 @@ namespace App_NintenShop
             this.lbl_bits = new System.Windows.Forms.Label();
             this.lbl_contador_carrito = new System.Windows.Forms.Label();
             this.Panel_Carrito = new System.Windows.Forms.Panel();
-            this.Dgv_Carrito = new System.Windows.Forms.DataGridView();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Consola = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Panel_Ayuda = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.Dgv_Carrito = new System.Windows.Forms.DataGridView();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Consola = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Btn_imprimir_carrito = new System.Windows.Forms.Button();
             this.btn_eliminar_carrito = new System.Windows.Forms.Button();
             this.lbl_compra_total_carrito = new System.Windows.Forms.Label();
@@ -92,10 +92,10 @@ namespace App_NintenShop
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Panel_Carrito.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Carrito)).BeginInit();
             this.Panel_Ayuda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Carrito)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -348,11 +348,11 @@ namespace App_NintenShop
             // 
             this.lbl_precio.AutoSize = true;
             this.lbl_precio.BackColor = System.Drawing.Color.White;
-            this.lbl_precio.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_precio.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_precio.ForeColor = System.Drawing.Color.Green;
-            this.lbl_precio.Location = new System.Drawing.Point(387, 360);
+            this.lbl_precio.Location = new System.Drawing.Point(636, 515);
             this.lbl_precio.Name = "lbl_precio";
-            this.lbl_precio.Size = new System.Drawing.Size(30, 28);
+            this.lbl_precio.Size = new System.Drawing.Size(24, 22);
             this.lbl_precio.TabIndex = 24;
             this.lbl_precio.Text = "--";
             this.lbl_precio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -390,13 +390,69 @@ namespace App_NintenShop
             this.Panel_Carrito.Controls.Add(this.label6);
             this.Panel_Carrito.Controls.Add(this.label5);
             this.Panel_Carrito.Controls.Add(this.label4);
-            this.Panel_Carrito.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Carrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Panel_Carrito.Location = new System.Drawing.Point(0, 24);
+            this.Panel_Carrito.Location = new System.Drawing.Point(186, 83);
             this.Panel_Carrito.Name = "Panel_Carrito";
-            this.Panel_Carrito.Size = new System.Drawing.Size(906, 564);
+            this.Panel_Carrito.Size = new System.Drawing.Size(179, 159);
             this.Panel_Carrito.TabIndex = 29;
             this.Panel_Carrito.Visible = false;
+            // 
+            // Panel_Ayuda
+            // 
+            this.Panel_Ayuda.Controls.Add(this.label7);
+            this.Panel_Ayuda.Controls.Add(this.label3);
+            this.Panel_Ayuda.Controls.Add(this.pictureBox4);
+            this.Panel_Ayuda.Controls.Add(this.pictureBox3);
+            this.Panel_Ayuda.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Panel_Ayuda.Location = new System.Drawing.Point(773, 426);
+            this.Panel_Ayuda.Name = "Panel_Ayuda";
+            this.Panel_Ayuda.Size = new System.Drawing.Size(133, 138);
+            this.Panel_Ayuda.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label7.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(40, 455);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(531, 20);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Gracias por darle un uso correcto al software: Attm. J. Israel C. Moncada.";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(38, 122);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(808, 151);
+            this.label3.TabIndex = 2;
+            this.label3.Text = resources.GetString("label3.Text");
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(449, 30);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(233, 68);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(216, 30);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(233, 68);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
             // 
             // Dgv_Carrito
             // 
@@ -468,64 +524,6 @@ namespace App_NintenShop
             this.Precio.HeaderText = "Precio del juego";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
-            // 
-            // Panel_Ayuda
-            // 
-            this.Panel_Ayuda.Controls.Add(this.label7);
-            this.Panel_Ayuda.Controls.Add(this.label3);
-            this.Panel_Ayuda.Controls.Add(this.pictureBox4);
-            this.Panel_Ayuda.Controls.Add(this.pictureBox3);
-            this.Panel_Ayuda.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Panel_Ayuda.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_Ayuda.Location = new System.Drawing.Point(0, 0);
-            this.Panel_Ayuda.Name = "Panel_Ayuda";
-            this.Panel_Ayuda.Size = new System.Drawing.Size(906, 564);
-            this.Panel_Ayuda.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label7.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(40, 455);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(531, 20);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Gracias por darle un uso correcto al software: Attm. J. Israel C. Moncada.";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            this.label3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(38, 122);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(808, 151);
-            this.label3.TabIndex = 2;
-            this.label3.Text = resources.GetString("label3.Text");
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(449, 30);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(233, 68);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(216, 30);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(233, 68);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
             // 
             // Btn_imprimir_carrito
             // 
@@ -650,11 +648,11 @@ namespace App_NintenShop
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Panel_Carrito.ResumeLayout(false);
             this.Panel_Carrito.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Carrito)).EndInit();
             this.Panel_Ayuda.ResumeLayout(false);
             this.Panel_Ayuda.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_Carrito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

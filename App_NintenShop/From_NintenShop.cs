@@ -1,4 +1,5 @@
 ﻿using System;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -21,6 +22,7 @@ namespace App_NintenShop
         public From_NintenShop()
         {
             InitializeComponent();
+            Datos_MySql_Arreglos();
             this.MaximizeBox = false;
             Main_folder = @"C:\Users\Israe\Pictures\NintenShop";
             Music = @"C:\Users\Israe\Pictures\NintenShop\NintenShop.wav";
@@ -250,30 +252,33 @@ namespace App_NintenShop
         {
             int Selected_Game_Buy = List_juegos.SelectedIndex;
             Videojuego Selected_Game;
-            if (Filter_Nes == true)
+            if (Selected_Game_Buy != -1)
             {
-                Selected_Game = videojuegos_nes[Selected_Game_Buy];
-                Add_Cart_Item(Selected_Game);
-            }
-            else if (Filter_Gb == true)
-            {
-                Selected_Game = videojuegos_gb[Selected_Game_Buy];
-                Add_Cart_Item(Selected_Game);
-            }
-            else if (Filter_Snes == true)
-            {
-                Selected_Game = videojuegos_snes[Selected_Game_Buy];
-                Add_Cart_Item(Selected_Game);
-            }
-            else if (Filter_N64 == true)
-            {
-                Selected_Game = videojuegos_n64[Selected_Game_Buy];
-                Add_Cart_Item(Selected_Game);
-            }
-            else
-            {
-                Selected_Game = videojuegos_gba[Selected_Game_Buy];
-                Add_Cart_Item(Selected_Game);
+                if (Filter_Nes == true)
+                {
+                    Selected_Game = videojuegos_nes[Selected_Game_Buy];
+                    Add_Cart_Item(Selected_Game);
+                }
+                else if (Filter_Gb == true)
+                {
+                    Selected_Game = videojuegos_gb[Selected_Game_Buy];
+                    Add_Cart_Item(Selected_Game);
+                }
+                else if (Filter_Snes == true)
+                {
+                    Selected_Game = videojuegos_snes[Selected_Game_Buy];
+                    Add_Cart_Item(Selected_Game);
+                }
+                else if (Filter_N64 == true)
+                {
+                    Selected_Game = videojuegos_n64[Selected_Game_Buy];
+                    Add_Cart_Item(Selected_Game);
+                }
+                else
+                {
+                    Selected_Game = videojuegos_gba[Selected_Game_Buy];
+                    Add_Cart_Item(Selected_Game);
+                }
             }
         }
 
@@ -325,7 +330,7 @@ namespace App_NintenShop
             lbl_creadores.Text = "Creador(es): " + Selected_Game.CREATORS + ".";
             lbl_año.Text = "Año: " + Selected_Game.YEAR.ToString() + ".";
             lbl_consola.Text = "Consola: " + Selected_Game.CONSOLE + ".";
-            lbl_precio.Text = "$" + Selected_Game.PRICE.ToString() + ".";
+            lbl_precio.Text = "$" + Selected_Game.PRICE.ToString();
             lbl_bits.Text = "Bits: " + Selected_Game.BITS.ToString() + ".";
         }
 
@@ -350,20 +355,20 @@ namespace App_NintenShop
             }
         }
 
-        private void Datos_Tablas_MySql(List<Videojuego> consoleList, SqlCommand commandConsole, SqlDataReader readerConsole)
+        private void Datos_Tablas_MySql(List<Videojuego> consoleList, MySqlCommand commandConsole, MySqlDataReader readerConsole)
         {
             while (readerConsole.Read())
             {
                 Videojuego videojuego = new Videojuego();
-                videojuego.TITLE = readerConsole["Title"].ToString();
-                videojuego.GENERE = readerConsole["Gender"].ToString();
-                videojuego.CREATORS = readerConsole["Creator"].ToString();
-                videojuego.PRICE = Convert.ToInt32(readerConsole["Price"]);
-                videojuego.CONSOLE = readerConsole["Console"].ToString();
-                videojuego.YEAR = Convert.ToInt32(readerConsole["Year"]);
+                videojuego.TITLE = readerConsole["Titulo"].ToString();
+                videojuego.GENERE = readerConsole["Genero"].ToString();
+                videojuego.CREATORS = readerConsole["Creadores"].ToString();
+                videojuego.PRICE = Convert.ToDouble(readerConsole["Precio"]);
+                videojuego.CONSOLE = readerConsole["Consola"].ToString();
+                videojuego.YEAR = Convert.ToInt32(readerConsole["Año"]);
                 videojuego.BITS = Convert.ToInt32(readerConsole["Bits"]);
-                videojuego.FOLDER = Convert.ToInt32(readerConsole["Folder"]);
-                videojuego.NUM_IMAGE = Convert.ToInt32(readerConsole["Num Imagen"]);
+                videojuego.FOLDER = Convert.ToInt32(readerConsole["Carpeta"]);
+                videojuego.NUM_IMAGE = Convert.ToInt32(readerConsole["Imagen"]);
                 consoleList.Add(videojuego);
             }
             readerConsole.Close();
@@ -371,8 +376,8 @@ namespace App_NintenShop
 
         private void Datos_MySql_Arreglos()
         {
-            Connect_database DataBase = new Connect_database();
-            using (SqlConnection connection = new SqlConnection(DataBase.CADENA_CONEXION))
+            Connect_database Cadena = new Connect_database();
+            using (MySqlConnection connection = new MySqlConnection(Cadena.CADENA_CONEXION))
             {
                 try
                 {
@@ -386,8 +391,8 @@ namespace App_NintenShop
                     for (int i = 0; i < consoleArr.Length; i++)
                     {
                         string console = consoleArr[i];
-                        SqlCommand command = new SqlCommand($"SELECT Titulo, Genero, Creadores, Precio, Consola, Año, Bits, Carpeta, Imagen FROM videojuegos_{console.ToLower()}", connection);
-                        SqlDataReader readerTable = command.ExecuteReader();
+                        MySqlCommand command = new MySqlCommand($"SELECT Titulo, Genero, Creadores, Precio, Consola, Año, Bits, Carpeta, Imagen FROM videojuegos_{console}", connection);
+                        MySqlDataReader readerTable = command.ExecuteReader();
                         List<Videojuego> TableList = new List<Videojuego>();
                         Datos_Tablas_MySql(TableList, command, readerTable);
                         switch (console.ToLower())

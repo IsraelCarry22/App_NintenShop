@@ -7,8 +7,6 @@ namespace App_NintenShop
 {
     internal class Connect_database
     {
-        MySqlConnection Conexion = new MySqlConnection();
-
         static string servidor = "localhost";
         static string bd = "consolas";
         static string usuario = "root";

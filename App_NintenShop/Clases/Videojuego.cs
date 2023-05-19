@@ -7,7 +7,7 @@ namespace App_NintenShop
         protected String Title;
         protected String Gender;
         protected String Creators;
-        protected int Price;
+        protected double Price;
         protected int Folder;
         protected int Num_Image;
 
@@ -29,7 +29,7 @@ namespace App_NintenShop
             set { Creators = value; }
         }
 
-        public int PRICE
+        public double PRICE
         {
             get { return Price; }
             set { Price = value; }
@@ -55,7 +55,7 @@ namespace App_NintenShop
             Num_Image = 0;
         }
 
-        public Videojuego(String title, String gender, String creators, int price, string console, int year, int bits, int folder, int num_image) : base(console, year, bits)
+        public Videojuego(String title, String gender, String creators, double price, string console, int year, int bits, int folder, int num_image) : base(console, year, bits)
         {
             this.Title = title;
             this.Gender = gender;
