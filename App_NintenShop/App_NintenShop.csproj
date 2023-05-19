@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="Clases\Consola.cs" />
     <Compile Include="Clases\Connect_database.cs" />
+    <Compile Include="Clases\System_Info.cs" />
     <Compile Include="From_NintenShop.cs">
       <SubType>Form</SubType>
     </Compile>
