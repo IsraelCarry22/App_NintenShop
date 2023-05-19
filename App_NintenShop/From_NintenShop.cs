@@ -168,29 +168,28 @@ namespace App_NintenShop
             }
         }
 
-        private void consolasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ayudaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
-        }
-
-        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Panel_Carrito.Visible = true;
+            Panel_Ayuda.Visible = true;
         }
 
         private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = false;
+            Panel_Ayuda.Visible = false;
         }
 
         private void CarritoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
+            Panel_Ayuda.Visible = false;
         }
 
         private void Btn_carrito_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
+            Panel_Ayuda.Visible = false;
         }
 
         private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
