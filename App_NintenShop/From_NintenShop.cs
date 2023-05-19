@@ -7,7 +7,6 @@ using System.Media;
 using System.IO;
 using System.Data;
 using System.Drawing;
-using App_NintenShop.Clases;
 using Org.BouncyCastle.Asn1.Crmf;
 using System.Security.Cryptography;
 
@@ -15,7 +14,6 @@ namespace App_NintenShop
 {
     public partial class From_NintenShop : Form
     {
-        System_Info systemInfo;
         Management_of_arhcivos Files;
         Videojuego[] videojuegos_nes, videojuegos_snes, videojuegos_n64, videojuegos_gb, videojuegos_gba;
         List<Videojuego> Cart_Video_Games_List;
@@ -32,7 +30,6 @@ namespace App_NintenShop
             Music = @"C:\Users\Israe\Pictures\NintenShop\NintenShop.wav";
             SoundPlayer player = new SoundPlayer(Music);
             player.PlayLooping();
-            systemInfo = new System_Info();
             videojuegos_nes = new Videojuego[15];
             videojuegos_gb = new Videojuego[15];
             videojuegos_snes = new Videojuego[15];
@@ -50,7 +47,6 @@ namespace App_NintenShop
         private void From_NintenShop_Load(object sender, EventArgs e)
         {
             Datos_MySql_Arreglos();
-            Information_Computer();
             for (int i = 0; i < 5; i++)
             {
                 string Folder = Path.Combine(Main_folder, $"Carpeta {i + 1}");
@@ -175,35 +171,26 @@ namespace App_NintenShop
         private void consolasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
-            Panel_Consolas.Visible = true;
-            Panel_Ayuda.Visible = false;
         }
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
-            Panel_Consolas.Visible = true;
-            Panel_Ayuda.Visible = true;
         }
 
         private void InicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = false;
-            Panel_Consolas.Visible = false;
-            Panel_Ayuda.Visible = false;
         }
 
         private void CarritoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
-            Panel_Consolas.Visible = false;
-            Panel_Ayuda.Visible = false;
         }
 
         private void Btn_carrito_Click(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
-            Panel_Ayuda.Visible = false;
         }
 
         private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
@@ -437,17 +424,5 @@ namespace App_NintenShop
             }
         }
 
-        private void Information_Computer()
-        {
-            lbl_CPUName.Text = systemInfo.GetCPUName();
-            lbl_CPUSpeed.Text = "Cpu speed: " + systemInfo.GetCPUSpeed();
-            lbl_GPU.Text = systemInfo.GetGPUName();
-            lbl_RAM.Text = "Ram: " + systemInfo.GetTotalRAM();
-            lbl_Disk.Text = systemInfo.GetDiskDrive();
-            lbl_FreeSpace.Text = "Espacio libre del disco: " + systemInfo.GetFreeDiskSpace();
-            lbl_TotalSpace.Text = "Espacio total: " + systemInfo.GetTotalDiskSpace();
-            lbl_OS.Text = systemInfo.GetOSName();
-            lbl_Resolution.Text = "Resolucion pantalla: " + systemInfo.GetScreenResolution();
-        }
     }
 }
