@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
-using System.Data.SqlClient;
 using System.Data;
 using System.Drawing;
 
