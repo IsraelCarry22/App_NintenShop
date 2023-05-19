@@ -9,6 +9,7 @@ namespace App_NintenShop
 {
 	public partial class From_NintenShop : Form
 	{
+        Connect_database D_B;
         Videojuego[] Consoles_Nes,Consoles_Snes,Consoles_N64,Consoles_Gb,Consoles_Gba;
         List<Videojuego> Cart_Video_Games_List;
         #region
@@ -18,22 +19,29 @@ namespace App_NintenShop
         Videojuego Gb_Donkey_kong,Gb_Catlevania_2_belmonts_revege,Gb_Metroid_2,Gb_Wario_land,Gb_Pokemon_amarillo,Gb_Pokemon_rojo,Gb_The_legend_of_zelda_oracle_of_seasons,Gb_Super_mario_land,Gb_The_legend_of_zelda_links_awakening,Gb_The_legend_of_zelda_oracle_of_ages,Gb_Super_mario_land_2,Gb_Mega_man_V,Gb_Mario_tennis,Gb_Kirbys_dream_land_2,Gb_Final_Fantasy_Adventure;
         Videojuego Gba_Mario_y_luigi_super_satar_saga,Gba_The_legend_of_zelda_minish_cap,Gba_Wario_land_4,Gba_Mega_Man_Zero_3,Gba_Metroid_zero_mission,Gba_Pokemon_esmeralda,Gba_Kirby_y_el_laberinto_de_los_espejos,Gba_Castlevania_Aria_of_srrow,Gba_Castlevania_circle_of_the_moon,Gba_Earthbound_3,Gba_Super_mario_advance_4,Gba_Super_mario_world,Gba_Yoshis_island_remake,Gba_Mega_Man_Zero,Gba_Metroid_fusion;
         #endregion
-        int Accountan, Final_purchase, Ticket_quantity = 0;
-        double Final_purchase_with_Iva = 0;
+        int Accountan, Index_Dgv, Ticket_quantity = 0;
+        double Final_purchase_with_Iva, Final_purchase = 0.00;
         bool Filter_Nes, Filter_Snes, Filter_Gb, Filter_N64, Filter_Gba;
+        string Main_folder, Music;
+        string[,] Image_Paths;
         public From_NintenShop()
         {
             InitializeComponent();
             this.MaximizeBox = false;
-            string Music = @"C:\Users\Israe\Documents\Trabajos de la Universidad\personal\App_NintenShop\App_NintenShop\Resources\NintenShop.wav";
+            Main_folder = @"C:\Users\Israe\Pictures\NintenShop";
+            Music = @"C:\Users\Israe\Pictures\NintenShop\NintenShop.wav";
             SoundPlayer player = new SoundPlayer(Music);
             player.PlayLooping();
+            D_B = new Connect_database();
+            D_B.establecer_conexion();
             Cart_Video_Games_List = new List<Videojuego>();
+            Image_Paths = new string[5, 15];
             Consoles_Nes = new Videojuego[15];
             Consoles_Gb = new Videojuego[15];
             Consoles_Snes = new Videojuego[15];
             Consoles_N64 = new Videojuego[15];
             Consoles_Gba = new Videojuego[15];
+            #region
             Nes_Super_mario_bros = new Videojuego("Super Mario Bros", "Plataformas", "Shigeru Miyamoto", 30, "NES", 1985, 8, 1);
             Consoles_Nes[0] = Nes_Super_mario_bros;
             Nes_Super_mario_bros_3 = new Videojuego("Super Mario Bros 3", "Plataformas", "Shigeru Miyamoto", 40, "NES", 1988, 8, 1);
@@ -184,12 +192,28 @@ namespace App_NintenShop
             Consoles_Gba[13] = Gba_Mega_Man_Zero;
             Gba_Metroid_fusion = new Videojuego("Metroid Fusion", "Acción, aventura", "Nintendo R&D1", 30, "GBA", 2002, 32, 1);
             Consoles_Gba[14] = Gba_Metroid_fusion;
+            #endregion
             Filter_Nes = true;
             Filter_Snes = false;
             Filter_Gb = false;
             Filter_N64 = false;
             Filter_Gba = false;
         }
+
+        private void From_NintenShop_Load(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                string Folder = Path.Combine(Main_folder, $"Carpeta {i + 1}");
+                string[] File = Directory.GetFiles(Folder, "*.jpg");
+                Array.Sort(File);
+                for (int j = 0; j < File.Length && j < 15; j++)
+                {
+                    Image_Paths[i, j] = File[j];
+                }
+            }
+        }
+
         public void Btm_filter_nes_Click(object sender, EventArgs e)
 		{
             Filter_Nes = true;
@@ -245,7 +269,7 @@ namespace App_NintenShop
             int Selected_Index = List_juegos.SelectedIndex;
             if (Selected_Index != -1)
             {
-                Videojuego Selected_Game = null;
+                Videojuego Selected_Game;
                 if (Filter_Nes == true)
                 {
                     Selected_Game = Consoles_Nes[Selected_Index];
@@ -270,10 +294,6 @@ namespace App_NintenShop
                 {
                     Selected_Game = Consoles_Gba[Selected_Index];
                     Information_Game(Consoles_Gba, Selected_Index);
-                }
-                if (Selected_Game != null)
-                {
-                    Change_Game_Image(Selected_Game.TITLE);
                 }
             }
         }
@@ -329,20 +349,20 @@ namespace App_NintenShop
 
         private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
         {
-            if (List_carrito.SelectedItems.Count == 0)
+            int selectedRowIndex = Dgv_Carrito.SelectedCells[0].RowIndex;
+            if (selectedRowIndex != -1)
             {
-                return;
+                Videojuego deletedVideoGame = Cart_Video_Games_List[selectedRowIndex];
+                Final_purchase -= deletedVideoGame.PRICE;
+                Final_purchase_with_Iva -= Math.Round(deletedVideoGame.PRICE * 0.16, 2);
+                Dgv_Carrito.Rows.RemoveAt(selectedRowIndex);
+                Cart_Video_Games_List.RemoveAt(selectedRowIndex);
+                Accountan--;
+                llbl_compra_iva_carrito.Text = $"${Math.Round(Final_purchase * 0.16, 2)}";
+                lbl_compra_total_carrito.Text = $"${Final_purchase}";
+                lbl_contador_carrito.Text = Accountan.ToString();
             }
-            int Selected_Index = List_carrito.SelectedIndices[0];
-            Videojuego Deleted_Video_game = Cart_Video_Games_List[Selected_Index];
-            Final_purchase -= (Deleted_Video_game.PRICE);
-            Final_purchase_with_Iva -= Math.Round((Deleted_Video_game.PRICE * .16), 2);
-            List_carrito.Items.RemoveAt(Selected_Index);
-            Cart_Video_Games_List.RemoveAt(Selected_Index);
-            Accountan -= 1;
-            llbl_compra_iva_carrito.Text = $"${Math.Round((Final_purchase * .16), 2).ToString()}" + ".";
-            lbl_compra_total_carrito.Text = $"${Final_purchase.ToString()}" + ".";
-            lbl_contador_carrito.Text = Accountan.ToString();
+
         }
 
         private void Btn_imprimir_carrito_Click(object sender, EventArgs e)
@@ -369,14 +389,14 @@ namespace App_NintenShop
                     }
                     Console.Beep();
                     MessageBox.Show("Ticke impreso exitosamente...");
-                    List_carrito.Items.Clear();
+                    Dgv_Carrito.Rows.Clear();
                     Cart_Video_Games_List.Clear();
                     llbl_compra_iva_carrito.Text = "--";
                     lbl_compra_total_carrito.Text = "--";
                     lbl_contador_carrito.Text = "0";
                     Accountan = 0;
-                    Final_purchase_with_Iva = 0;
-                    Final_purchase = 0;
+                    Final_purchase_with_Iva = 0.00;
+                    Final_purchase = 0.00;
                 }
                 catch (Exception ex)
                 {
@@ -388,7 +408,7 @@ namespace App_NintenShop
         private void Btn_añadir_carrito_Click(object sender, EventArgs e)
         {
             int Selected_Game_Buy = List_juegos.SelectedIndex;
-            Videojuego Selected_Game = null;
+            Videojuego Selected_Game;
             if (Filter_Nes == true)
             {
                 Selected_Game = Consoles_Nes[Selected_Game_Buy];
@@ -472,6 +492,7 @@ namespace App_NintenShop
         {
             if (!Cart_Video_Games_List.Contains(Game))
             {
+                Index_Dgv = Dgv_Carrito.Rows.Add();
                 Cart_Video_Games_List.Add(Game);
                 Accountan++;
                 lbl_contador_carrito.Text = Accountan.ToString();
@@ -479,241 +500,12 @@ namespace App_NintenShop
                 Final_purchase_with_Iva = Math.Round((Final_purchase * 0.16), 2);
                 Console.Beep();
                 Videojuego Add_Console = Cart_Video_Games_List.Last();
-                List_carrito.Items.Add(Add_Console.ToString());
-                llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva.ToString()}" + ".";
-                lbl_compra_total_carrito.Text = $"${Final_purchase.ToString()}" + ".";
-            }
-        }
-
-        private void Change_Game_Image(string Video_Game_Name)
-        {
-            switch (Video_Game_Name)
-            {
-                case "Super Mario Bros":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Super_mario_bros;
-                    break;
-                case "Super Mario Bros 3":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Super_mario_bros_3;
-                    break;
-                case "Mega Man":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Mega_man_1;
-                    break;
-                case "Mega Man 2":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Mega_man_2;
-                    break;
-                case "Metroid":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Metroid;
-                    break;
-                case "Kirby's Adventure":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Kirby_adventure;
-                    break;
-                case "The Legend of Zelda":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_The_legen_of_zelda;
-                    break;
-                case "Castlevania":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Castlevania;
-                    break;
-                case "Castlevania III: Dracula's Curse":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Castlevania_3;
-                    break;
-                case "Kid Icarus":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_kid_ikarus;
-                    break;
-                case "EarthBound Beginnings":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Earthbound;
-                    break;
-                case "Bomberman":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Bomberman;
-                    break;
-                case "Punch-Out!!":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Ponch_out;
-                    break;
-                case "Contra":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Contra;
-                    break;
-                case "Battletoads":
-                    Pic_Caratulas.Image = Properties.Resources.Ness_Battletoads;
-                    break;
-                case "Donkey Kong":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Donkey_kong;
-                    break;
-                case "Castlevania II: Belmont's Revenge":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Castlevania_2;
-                    break;
-                case "Metroid II: Return of Samus":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Metroid_2;
-                    break;
-                case "Wario Land: Super Mario Land 3":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Wario_land_1;
-                    break;
-                case "Pokémon Amarillo":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Pokemon_amarillo;
-                    break;
-                case "Pokémon Rojo":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Pokemon_rojo;
-                    break;
-                case "The Legend of Zelda: Oracle of Seasons":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_The_legend_of_zelda_seasons;
-                    break;
-                case "The Legend of Zelda: Oracle of Ages":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_The_legend_of_zelda_ages;
-                    break;
-                case "The Legend of Zelda: Link's Awakening":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_The_legend_of_zelda_links_awakening;
-                    break;
-                case "Super Mario Land":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Super_mario_land;
-                    break;
-                case "Super mario land 2":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Super_mario_land_2;
-                    break;
-                case "Mega Man V":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Mega_man_V;
-                    break;
-                case "Mario Tennis":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Mario_tennis;
-                    break;
-                case "Kirby's Dream Land 2":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Kirby_dream_land_2;
-                    break;
-                case "Final Fantasy Adventure":
-                    Pic_Caratulas.Image = Properties.Resources.Gb_Final_fantasy_adventure;
-                    break;
-                case "Super Mario World":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Super_mario_world;
-                    break;
-                case "Chrono Trigger":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Crono_triger;
-                    break;
-                case "Street Fighter II: Turbo":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Street_fighter_2;
-                    break;
-                case "Super Mario Kart":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Super_mario_kart;
-                    break;
-                case "Mega Man X":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Mega_man_X;
-                    break;
-                case "Kirby Super Star":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Kirby_super_star;
-                    break;
-                case "The Legend of Zelda: A Link to the Past":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_The_legen_of_zelda_link_to_the_past;
-                    break;
-                case "Super Castlevania IV":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Super_castlevania_4;
-                    break;
-                case "Super Metroid":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Super_metroid;
-                    break;
-                case "Donkey Kong Country":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Donkey_kong_country;
-                    break;
-                case "Mother 2 (EarthBound)":
-                    Pic_Caratulas.Image = Properties.Resources.Sness_Earthbound_2;
-                    break;
-                case "Super Bomberman":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Super_bomberman;
-                    break;
-                case "Yoshi's Island":
-                    Pic_Caratulas.Image = Properties.Resources.Snes_Yoshi_island;
-                    break;
-                case "F-Zero":
-                    Pic_Caratulas.Image = Properties.Resources.Sness_Fzero;
-                    break;
-                case "Super Ghouls 'n Ghosts":
-                    Pic_Caratulas.Image = Properties.Resources.Sness_Super_ghoulsn_ghostsjpg;
-                    break;
-                case "Mario Party":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Mario_party;
-                    break;
-                case "Perfect Dark":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Perfect_dark;
-                    break;
-                case "Donkey Kong 64":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Donkey_kong_64;
-                    break;
-                case "Mario Tennis 64":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Mario_tennis;
-                    break;
-                case "Doom 64":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Doom_64;
-                    break;
-                case "Kirby 64: The Crystal Shards":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Kirby_stars_64;
-                    break;
-                case "The Legend of Zelda: Majora's Mask":
-                    Pic_Caratulas.Image = Properties.Resources.N64_The_legend_of_zelda_majora_mask;
-                    break;
-                case "The Legend of Zelda: Ocarina of Time":
-                    Pic_Caratulas.Image = Properties.Resources.N64_The_legend_of_zelda_ocarina_of_time;
-                    break;
-                case "Super Mario 64":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Super_mario_64;
-                    break;
-                case "Paper Mario":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Paper_mario;
-                    break;
-                case "Pokémon Stadium":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Pokemon_stadium;
-                    break;
-                case "Mario Kart 64":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Mario_kart_64;
-                    break;
-                case "Star Fox 64":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Star_fox_64;
-                    break;
-                case "Banjo-Kazooie":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Banjo_kazooie;
-                    break;
-                case "Super Smash Bros":
-                    Pic_Caratulas.Image = Properties.Resources.N64_Super_smash_bros;
-                    break;
-                case "Mario & Luigi: Superstar Saga":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Mario_y_luigi_super_star_saga;
-                    break;
-                case "The Legend of Zelda: The Minish Cap":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_The_legend_of_zelda_minish_cap;
-                    break;
-                case "Wario Land 4":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Wario_land_4;
-                    break;
-                case "Mega Man Zero 3":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Mega_Man_Zero_3;
-                    break;
-                case "Metroid Zero Mission":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Metroid_zero_mission;
-                    break;
-                case "Pokemon Esmeralda":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Pokemon_esmeralda;
-                    break;
-                case "Kirby y el Laberinto de los Espejos":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Kirby_amasing_mirrow;
-                    break;
-                case "Castlevania: Aria of Sorrow":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Castlevania_arrial_of_sorrow;
-                    break;
-                case "Castlevania: Circle of the Moon":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Castlevania_cirvcle_of_moon;
-                    break;
-                case "Mother 3":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Mother_3;
-                    break;
-                case "Super Mario Advance 4: Super Mario Bros 3":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Super_mario_advance_4;
-                    break;
-                case "Super Mario World: Super Mario Advance 2":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Super_mario_world;
-                    break;
-                case "Yoshi's Island: Super Mario Advance 3":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Yoshi_island;
-                    break;
-                case "Mega Man Zero":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Mega_Man_Zero;
-                    break;
-                case "Metroid Fusion":
-                    Pic_Caratulas.Image = Properties.Resources.Gba_Metroid_fusion;
-                    break;
+                Dgv_Carrito.Rows[Index_Dgv].Cells[0].Value = Add_Console.TITLE;
+                Dgv_Carrito.Rows[Index_Dgv].Cells[1].Value = Add_Console.GENERE;
+                Dgv_Carrito.Rows[Index_Dgv].Cells[2].Value = Add_Console.CONSOLE;
+                Dgv_Carrito.Rows[Index_Dgv].Cells[3].Value = Add_Console.PRICE;
+                llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva}";
+                lbl_compra_total_carrito.Text = $"${Final_purchase}";
             }
         }
     }
