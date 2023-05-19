@@ -326,7 +326,6 @@ namespace App_NintenShop
                 string rutaImagen = Image_Paths[fila, columna];
                 Pic_Caratulas.Image = Image.FromFile(rutaImagen);
             }
-
         }
 
         private void Add_Cart_Item(Videojuego Game)
