@@ -137,6 +137,7 @@
       <DependentUpon>From_NintenShop.cs</DependentUpon>
     </Compile>
     <Compile Include="interfaces\IConsola_juegos.cs" />
+    <Compile Include="Clases\Management_of_arhcivos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Clases\Videojuego.cs" />

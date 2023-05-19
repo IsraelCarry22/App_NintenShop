@@ -13,10 +13,9 @@ namespace App_NintenShop
 {
     public partial class From_NintenShop : Form
     {
-        Videojuego Videojuego;
+        Management_of_arhcivos Files;
         Videojuego[] videojuegos_nes, videojuegos_snes, videojuegos_n64, videojuegos_gb, videojuegos_gba;
         List<Videojuego> Cart_Video_Games_List;
-        Videojuego videojuego;
         int Accountan, Index_Dgv, Ticket_quantity = 0;
         double Final_purchase_with_Iva, Final_purchase = 0.00;
         bool Filter_Nes, Filter_Snes, Filter_Gb, Filter_N64, Filter_Gba;
@@ -25,12 +24,11 @@ namespace App_NintenShop
         public From_NintenShop()
         {
             InitializeComponent();
-            videojuego = new Videojuego();
             this.MaximizeBox = false;
             Main_folder = @"C:\Users\Israe\Pictures\NintenShop";
             Music = @"C:\Users\Israe\Pictures\NintenShop\NintenShop.wav";
-            //SoundPlayer player = new SoundPlayer(Music);
-            //player.PlayLooping();
+            SoundPlayer player = new SoundPlayer(Music);
+            player.PlayLooping();
             Cart_Video_Games_List = new List<Videojuego>();
             Image_Paths = new string[5, 15];
             videojuegos_nes = new Videojuego[15];
@@ -218,7 +216,7 @@ namespace App_NintenShop
                 Ticket_quantity++;
                 try
                 {
-                    videojuego.Manejo_Arcivo(Cart_Video_Games_List, Ticket_quantity, Final_purchase_with_Iva, Final_purchase);
+                    Files = new Management_of_arhcivos(Cart_Video_Games_List, Ticket_quantity, Final_purchase_with_Iva, Final_purchase);
                     Console.Beep();
                     MessageBox.Show("Ticke impreso exitosamente...");
                     Dgv_Carrito.Rows.Clear();
