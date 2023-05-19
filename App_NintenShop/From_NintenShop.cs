@@ -7,13 +7,16 @@ using System.Media;
 using System.IO;
 using System.Data.SqlClient;
 using System.Data;
+using System.Drawing;
 
 namespace App_NintenShop
 {
     public partial class From_NintenShop : Form
     {
+        Videojuego Videojuego;
         Videojuego[] videojuegos_nes, videojuegos_snes, videojuegos_n64, videojuegos_gb, videojuegos_gba;
         List<Videojuego> Cart_Video_Games_List;
+        Videojuego videojuego;
         int Accountan, Index_Dgv, Ticket_quantity = 0;
         double Final_purchase_with_Iva, Final_purchase = 0.00;
         bool Filter_Nes, Filter_Snes, Filter_Gb, Filter_N64, Filter_Gba;
@@ -22,12 +25,12 @@ namespace App_NintenShop
         public From_NintenShop()
         {
             InitializeComponent();
-            Datos_MySql_Arreglos();
+            videojuego = new Videojuego();
             this.MaximizeBox = false;
             Main_folder = @"C:\Users\Israe\Pictures\NintenShop";
             Music = @"C:\Users\Israe\Pictures\NintenShop\NintenShop.wav";
-            SoundPlayer player = new SoundPlayer(Music);
-            player.PlayLooping();
+            //SoundPlayer player = new SoundPlayer(Music);
+            //player.PlayLooping();
             Cart_Video_Games_List = new List<Videojuego>();
             Image_Paths = new string[5, 15];
             videojuegos_nes = new Videojuego[15];
@@ -213,23 +216,9 @@ namespace App_NintenShop
             if (Cart_Video_Games_List.Count > 0)
             {
                 Ticket_quantity++;
-                string Date_Time_Ticket = DateTime.Now.ToString();
-                string Desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string Ticket = Path.Combine(Desktop, $"NintenShop {Ticket_quantity}.txt");
                 try
                 {
-                    using (StreamWriter File = new StreamWriter(Ticket))
-                    {
-                        File.WriteLine($"NintenShop Inc.                  {Date_Time_Ticket}\n");
-                        foreach (Consola Console in Cart_Video_Games_List)
-                        {
-                            File.WriteLine(Console.Ticket());
-                        }
-                        File.WriteLine($"Iva: ${Final_purchase_with_Iva}.");
-                        File.WriteLine($"Compra Total: ${Final_purchase}.");
-                        File.WriteLine("\nGracias por comprar en NintenShop Inc.");
-                        File.Close();
-                    }
+                    videojuego.Manejo_Arcivo(Cart_Video_Games_List, Ticket_quantity, Final_purchase_with_Iva, Final_purchase);
                     Console.Beep();
                     MessageBox.Show("Ticke impreso exitosamente...");
                     Dgv_Carrito.Rows.Clear();
@@ -315,7 +304,7 @@ namespace App_NintenShop
                     + "Genero: " + $"{Selected_Game.GENERE}" + "\n"
                     + "Año: " + $"{Selected_Game.YEAR}" + "\n"
                     + "Precio: " + $"{Selected_Game.PRICE}" + "\n\n"
-                    + "Iva: " + $"${Iva}" + "\n"
+                    + "Sub Iva: " + $"${Iva}" + "\n"
                     + "Total:" + $" ${Buy}\n\n"
                     + "Sub Total Final:" + $" ${Final_Purchase}\n"
                     + "Gracias por su compra.");
@@ -332,6 +321,14 @@ namespace App_NintenShop
             lbl_consola.Text = "Consola: " + Selected_Game.CONSOLE + ".";
             lbl_precio.Text = "$" + Selected_Game.PRICE.ToString();
             lbl_bits.Text = "Bits: " + Selected_Game.BITS.ToString() + ".";
+            int fila = Selected_Game.FOLDER;
+            int columna = Selected_Game.NUM_IMAGE;
+            if (fila >= 0 && columna >= 0 && fila < Image_Paths.GetLength(0) && columna < Image_Paths.GetLength(1))
+            {
+                string rutaImagen = Image_Paths[fila, columna];
+                Pic_Caratulas.Image = Image.FromFile(rutaImagen);
+            }
+
         }
 
         private void Add_Cart_Item(Videojuego Game)
