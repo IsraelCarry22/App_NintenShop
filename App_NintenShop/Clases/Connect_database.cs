@@ -1,9 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Windows.Forms;
-
-namespace App_NintenShop
+﻿namespace App_NintenShop
 {
     internal class Connect_database
     {

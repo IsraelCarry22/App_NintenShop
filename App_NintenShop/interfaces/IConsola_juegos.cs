@@ -7,6 +7,7 @@
         string CREATORS { get; set; }
         double PRICE { get; set; }
         int FOLDER { get; set; }
+        int NUM_IMAGE { get; set; }
         string ToString();
         string Ticket();
     }

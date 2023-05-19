@@ -207,7 +207,6 @@ namespace App_NintenShop
                 lbl_compra_total_carrito.Text = $"${Final_purchase}";
                 lbl_contador_carrito.Text = Accountan.ToString();
             }
-
         }
 
         private void Btn_imprimir_carrito_Click(object sender, EventArgs e)
@@ -422,6 +421,5 @@ namespace App_NintenShop
                 }
             }
         }
-
     }
 }
