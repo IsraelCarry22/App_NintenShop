@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace App_NintenShop
 {
@@ -13,7 +8,8 @@ namespace App_NintenShop
         protected String Gender;
         protected String Creators;
         protected int Price;
-        protected int Quiantity;
+        protected int Folder;
+        protected int Num_Image;
 
         public string TITLE
         {
@@ -38,10 +34,15 @@ namespace App_NintenShop
             get { return Price; }
             set { Price = value; }
         }
-        public int QUANTITY
+        public int FOLDER
         {
-            get { return Quiantity; }
-            set { Quiantity = value; }
+            get { return Folder; }
+            set { Folder = value; }
+        }
+        public int NUM_IMAGE
+        {
+            get { return Num_Image; }
+            set { Num_Image = value; }
         }
 
         public Videojuego() : base()
@@ -50,16 +51,18 @@ namespace App_NintenShop
             Gender = string.Empty;
             Creators = string.Empty;
             Price = 0;
-            Quiantity = 1;
+            Folder = 0;
+            Num_Image = 0;
         }
 
-        public Videojuego(String title, String gender, String creators, int price, string console, int year, int bits, int quiantity) : base(console, year, bits)
+        public Videojuego(String title, String gender, String creators, int price, string console, int year, int bits, int folder, int num_image) : base(console, year, bits)
         {
             this.Title = title;
             this.Gender = gender;
             this.Creators = creators;
             this.Price = price;
-            this.Quiantity = quiantity;
+            this.Folder = folder;
+            this.Num_Image = num_image;
         }
 
         public override string ToString()
@@ -75,7 +78,6 @@ namespace App_NintenShop
             + "\n" + $"Consola: {Console.ToUpper()}"
             + "\n" + $"Creadores: {Creators.ToUpper()}"
             + "\n" + $"Precio: ${Price}"
-            + "\n" + $"Unidades: {Quiantity}"
             + "\n" + $"Bits: {Bits}"
             + "\n\n" + base.ToString();
         }
