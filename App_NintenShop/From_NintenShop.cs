@@ -7,14 +7,12 @@ using System.Media;
 using System.IO;
 using System.Data;
 using System.Drawing;
-using Org.BouncyCastle.Asn1.Crmf;
-using System.Security.Cryptography;
 
 namespace App_NintenShop
 {
     public partial class From_NintenShop : Form
     {
-        Management_of_arhcivos Files;
+        Management_of_arhcivos Files_Doc;
         Videojuego[] videojuegos_nes, videojuegos_snes, videojuegos_n64, videojuegos_gb, videojuegos_gba;
         List<Videojuego> Cart_Video_Games_List;
         int Accountan, Index_Dgv, Ticket_quantity = 0;
@@ -109,65 +107,6 @@ namespace App_NintenShop
             Filter_Games(Filter_Gba, videojuegos_gba);
         }
 
-        private void List_juegos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int Selected_Index = List_juegos.SelectedIndex;
-            if (Selected_Index != -1)
-            {
-                Videojuego Selected_Game;
-                if (Filter_Nes == true)
-                {
-                    Selected_Game = videojuegos_nes[Selected_Index];
-                    Information_Game(videojuegos_nes, Selected_Index);
-                }
-                else if (Filter_Gb == true)
-                {
-                    Selected_Game = videojuegos_gb[Selected_Index];
-                    Information_Game(videojuegos_gb, Selected_Index);
-                }
-                else if (Filter_Snes == true)
-                {
-                    Selected_Game = videojuegos_snes[Selected_Index];
-                    Information_Game(videojuegos_snes, Selected_Index);
-                }
-                else if (Filter_N64 == true)
-                {
-                    Selected_Game = videojuegos_n64[Selected_Index];
-                    Information_Game(videojuegos_n64, Selected_Index);
-                }
-                else
-                {
-                    Selected_Game = videojuegos_gba[Selected_Index];
-                    Information_Game(videojuegos_gba, Selected_Index);
-                }
-            }
-        }
-
-        private void Btn_comprar_Click(object sender, EventArgs e)
-        {
-            int Selected_Game_Buy = List_juegos.SelectedIndex;
-            if (Filter_Nes == true)
-            {
-                Process_Purchase(videojuegos_nes, Selected_Game_Buy);
-            }
-            else if (Filter_Gb == true)
-            {
-                Process_Purchase(videojuegos_gb, Selected_Game_Buy);
-            }
-            else if (Filter_Snes == true)
-            {
-                Process_Purchase(videojuegos_snes, Selected_Game_Buy);
-            }
-            else if (Filter_N64 == true)
-            {
-                Process_Purchase(videojuegos_n64, Selected_Game_Buy);
-            }
-            else
-            {
-                Process_Purchase(videojuegos_gba, Selected_Game_Buy);
-            }
-        }
-
         private void ayudaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Panel_Carrito.Visible = true;
@@ -192,46 +131,28 @@ namespace App_NintenShop
             Panel_Ayuda.Visible = false;
         }
 
-        private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
+        private void Btn_comprar_Click(object sender, EventArgs e)
         {
-            int selectedRowIndex = Dgv_Carrito.SelectedCells[0].RowIndex;
-            if (selectedRowIndex != -1)
+            int Selected_Game_Buy = List_juegos.SelectedIndex;
+            if (Filter_Nes == true)
             {
-                Videojuego deletedVideoGame = Cart_Video_Games_List[selectedRowIndex];
-                Final_purchase -= deletedVideoGame.PRICE;
-                Final_purchase_with_Iva -= Math.Round(deletedVideoGame.PRICE * 0.16, 2);
-                Dgv_Carrito.Rows.RemoveAt(selectedRowIndex);
-                Cart_Video_Games_List.RemoveAt(selectedRowIndex);
-                Accountan--;
-                llbl_compra_iva_carrito.Text = $"${Math.Round(Final_purchase * 0.16, 2)}";
-                lbl_compra_total_carrito.Text = $"${Final_purchase}";
-                lbl_contador_carrito.Text = Accountan.ToString();
+                Comprar_Unidad(videojuegos_nes, Selected_Game_Buy);
             }
-        }
-
-        private void Btn_imprimir_carrito_Click(object sender, EventArgs e)
-        {
-            if (Cart_Video_Games_List.Count > 0)
+            else if (Filter_Gb == true)
             {
-                Ticket_quantity++;
-                try
-                {
-                    Files = new Management_of_arhcivos(Cart_Video_Games_List, Ticket_quantity, Final_purchase_with_Iva, Final_purchase);
-                    Console.Beep();
-                    MessageBox.Show("Ticke impreso exitosamente...");
-                    Dgv_Carrito.Rows.Clear();
-                    Cart_Video_Games_List.Clear();
-                    llbl_compra_iva_carrito.Text = "--";
-                    lbl_compra_total_carrito.Text = "--";
-                    lbl_contador_carrito.Text = "0";
-                    Accountan = 0;
-                    Final_purchase_with_Iva = 0.00;
-                    Final_purchase = 0.00;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al imprimir el ticket..." + ex.Message);
-                }
+                Comprar_Unidad(videojuegos_gb, Selected_Game_Buy);
+            }
+            else if (Filter_Snes == true)
+            {
+                Comprar_Unidad(videojuegos_snes, Selected_Game_Buy);
+            }
+            else if (Filter_N64 == true)
+            {
+                Comprar_Unidad(videojuegos_n64, Selected_Game_Buy);
+            }
+            else
+            {
+                Comprar_Unidad(videojuegos_gba, Selected_Game_Buy);
             }
         }
 
@@ -269,6 +190,104 @@ namespace App_NintenShop
             }
         }
 
+        private void List_juegos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int Selected_Index = List_juegos.SelectedIndex;
+            if (Selected_Index != -1)
+            {
+                Videojuego Selected_Game;
+                if (Filter_Nes == true)
+                {
+                    Selected_Game = videojuegos_nes[Selected_Index];
+                    Information_Game(videojuegos_nes, Selected_Index);
+                }
+                else if (Filter_Gb == true)
+                {
+                    Selected_Game = videojuegos_gb[Selected_Index];
+                    Information_Game(videojuegos_gb, Selected_Index);
+                }
+                else if (Filter_Snes == true)
+                {
+                    Selected_Game = videojuegos_snes[Selected_Index];
+                    Information_Game(videojuegos_snes, Selected_Index);
+                }
+                else if (Filter_N64 == true)
+                {
+                    Selected_Game = videojuegos_n64[Selected_Index];
+                    Information_Game(videojuegos_n64, Selected_Index);
+                }
+                else
+                {
+                    Selected_Game = videojuegos_gba[Selected_Index];
+                    Information_Game(videojuegos_gba, Selected_Index);
+                }
+            }
+        }
+
+        private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
+        {
+            int selectedRowIndex = Dgv_Carrito.SelectedCells[0].RowIndex;
+            if (selectedRowIndex != -1)
+            {
+                Videojuego deletedVideoGame = Cart_Video_Games_List[selectedRowIndex];
+                Final_purchase -= deletedVideoGame.PRICE;
+                Final_purchase_with_Iva -= Math.Round(deletedVideoGame.PRICE * 0.16, 2);
+                Dgv_Carrito.Rows.RemoveAt(selectedRowIndex);
+                Cart_Video_Games_List.RemoveAt(selectedRowIndex);
+                Accountan--;
+                llbl_compra_iva_carrito.Text = $"${Math.Round(Final_purchase * 0.16, 2)}";
+                lbl_compra_total_carrito.Text = $"${Final_purchase}";
+                lbl_contador_carrito.Text = Accountan.ToString();
+            }
+        }
+
+        private void Btn_imprimir_carrito_Click(object sender, EventArgs e)
+        {
+            if (Cart_Video_Games_List.Count > 0)
+            {
+                Ticket_quantity++;
+                try
+                {
+                    Files_Doc = new Management_of_arhcivos(Cart_Video_Games_List, Ticket_quantity, Final_purchase_with_Iva, Final_purchase);
+                    Console.Beep();
+                    MessageBox.Show("Ticke impreso exitosamente...");
+                    Dgv_Carrito.Rows.Clear();
+                    Cart_Video_Games_List.Clear();
+                    llbl_compra_iva_carrito.Text = "--";
+                    lbl_compra_total_carrito.Text = "--";
+                    lbl_contador_carrito.Text = "0";
+                    Accountan = 0;
+                    Final_purchase_with_Iva = 0.00;
+                    Final_purchase = 0.00;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al imprimir el ticket..." + ex.Message);
+                }
+            }
+        }
+
+        private void Add_Cart_Item(Videojuego Game)
+        {
+            if (!Cart_Video_Games_List.Contains(Game))
+            {
+                Index_Dgv = Dgv_Carrito.Rows.Add();
+                Cart_Video_Games_List.Add(Game);
+                Accountan++;
+                lbl_contador_carrito.Text = Accountan.ToString();
+                Final_purchase += Game.PRICE;
+                Final_purchase_with_Iva = Math.Round((Final_purchase * 0.16), 2);
+                Console.Beep();
+                Videojuego Add_Console = Cart_Video_Games_List.Last();
+                Dgv_Carrito.Rows[Index_Dgv].Cells[0].Value = Add_Console.TITLE;
+                Dgv_Carrito.Rows[Index_Dgv].Cells[1].Value = Add_Console.GENERE;
+                Dgv_Carrito.Rows[Index_Dgv].Cells[2].Value = Add_Console.CONSOLE;
+                Dgv_Carrito.Rows[Index_Dgv].Cells[3].Value = Add_Console.PRICE;
+                llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva}";
+                lbl_compra_total_carrito.Text = $"${Final_purchase}";
+            }
+        }
+
         private void Filter_Games(bool Filter, Videojuego[] Video_Games)
         {
             if (Filter != false)
@@ -286,7 +305,7 @@ namespace App_NintenShop
             }
         }
 
-        private void Process_Purchase(Videojuego[] Video_Games, int Selected_Index)
+        private void Comprar_Unidad(Videojuego[] Video_Games, int Selected_Index)
         {
             if (Selected_Index != -1)
             {
@@ -325,27 +344,6 @@ namespace App_NintenShop
             {
                 string rutaImagen = Image_Paths[fila, columna];
                 Pic_Caratulas.Image = Image.FromFile(rutaImagen);
-            }
-        }
-
-        private void Add_Cart_Item(Videojuego Game)
-        {
-            if (!Cart_Video_Games_List.Contains(Game))
-            {
-                Index_Dgv = Dgv_Carrito.Rows.Add();
-                Cart_Video_Games_List.Add(Game);
-                Accountan++;
-                lbl_contador_carrito.Text = Accountan.ToString();
-                Final_purchase += Game.PRICE;
-                Final_purchase_with_Iva = Math.Round((Final_purchase * 0.16), 2);
-                Console.Beep();
-                Videojuego Add_Console = Cart_Video_Games_List.Last();
-                Dgv_Carrito.Rows[Index_Dgv].Cells[0].Value = Add_Console.TITLE;
-                Dgv_Carrito.Rows[Index_Dgv].Cells[1].Value = Add_Console.GENERE;
-                Dgv_Carrito.Rows[Index_Dgv].Cells[2].Value = Add_Console.CONSOLE;
-                Dgv_Carrito.Rows[Index_Dgv].Cells[3].Value = Add_Console.PRICE;
-                llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva}";
-                lbl_compra_total_carrito.Text = $"${Final_purchase}";
             }
         }
 
