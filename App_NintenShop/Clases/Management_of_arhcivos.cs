@@ -20,8 +20,8 @@ namespace App_NintenShop
                 {
                     file_tiket.WriteLine(Console.Ticket());
                 }
-                file_tiket.WriteLine($"Iva: ${final_purchase_with_Iva}.");
-                file_tiket.WriteLine($"Compra Total: ${final_purchase}.");
+                file_tiket.WriteLine($"Iva: ${final_purchase_with_Iva}");
+                file_tiket.WriteLine($"Compra Total: ${final_purchase}");
                 file_tiket.WriteLine("\nGracias por comprar en NintenShop Inc.");
             }
         }
