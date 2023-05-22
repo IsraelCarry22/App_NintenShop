@@ -279,12 +279,15 @@ namespace App_NintenShop
                 Final_purchase_with_Iva = Math.Round((Final_purchase * 0.16), 2);
                 Console.Beep();
                 Videojuego Add_Console = Cart_Video_Games_List.Last();
+                string Salida_Precio = string.Format("{0:C2}",Add_Console.PRICE);
                 Dgv_Carrito.Rows[Index_Dgv].Cells[0].Value = Add_Console.TITLE;
                 Dgv_Carrito.Rows[Index_Dgv].Cells[1].Value = Add_Console.GENERE;
                 Dgv_Carrito.Rows[Index_Dgv].Cells[2].Value = Add_Console.CONSOLE;
-                Dgv_Carrito.Rows[Index_Dgv].Cells[3].Value = Add_Console.PRICE;
-                llbl_compra_iva_carrito.Text = $"${Final_purchase_with_Iva}";
-                lbl_compra_total_carrito.Text = $"${Final_purchase}";
+                Dgv_Carrito.Rows[Index_Dgv].Cells[3].Value = Salida_Precio;
+                string Salida_1 = string.Format("{0:C2}", Final_purchase_with_Iva);
+                string Salida_2 = string.Format("{0:C2}", Final_purchase);
+                llbl_compra_iva_carrito.Text = $"{Salida_1}";
+                lbl_compra_total_carrito.Text = $"{Salida_2}";
             }
         }
 
@@ -314,6 +317,9 @@ namespace App_NintenShop
                 double Iva = Math.Round((Buy / 1.16) * .16, 2);
                 Buy = Math.Round(Buy - Iva, 2);
                 double Final_Purchase = Buy + Iva;
+                string Salida_1 = string.Format("{0:C2}", Iva);
+                string Salida_2 = string.Format("{0:C2}", Buy);
+                string Salida_3 = string.Format("{0:C2}", Final_Purchase);
                 Console.Beep();
                 MessageBox.Show(
                     $"NintenShop            {DateTime.Now}\n\n"
@@ -321,9 +327,9 @@ namespace App_NintenShop
                     + "Genero: " + $"{Selected_Game.GENERE}" + "\n"
                     + "Año: " + $"{Selected_Game.YEAR}" + "\n"
                     + "Precio: " + $"{Selected_Game.PRICE}" + "\n\n"
-                    + "Sub Iva: " + $"${Iva}" + "\n"
-                    + "Total:" + $" ${Buy}\n\n"
-                    + "Sub Total Final:" + $" ${Final_Purchase}\n"
+                    + "Sub Iva: " + $"{Salida_1}" + "\n"
+                    + "Total: " + $"{Salida_2}\n\n"
+                    + "Sub Total Final:" + $"{Salida_3}\n"
                     + "Gracias por su compra.");
             }
         }
@@ -331,12 +337,13 @@ namespace App_NintenShop
         private void Information_Game(Videojuego[] Video_Games, int Selected_Image)
         {
             Videojuego Selected_Game = Video_Games[Selected_Image];
+            string SAL_Inf_Precio = string.Format("{0:C2}", Selected_Game.PRICE);
             lbl_titulo.Text = "Título: " + Selected_Game.TITLE + ".";
             lbl_genero.Text = "Género: " + Selected_Game.GENERE + ".";
             lbl_creadores.Text = "Creador(es): " + Selected_Game.CREATORS + ".";
             lbl_año.Text = "Año: " + Selected_Game.YEAR.ToString() + ".";
             lbl_consola.Text = "Consola: " + Selected_Game.CONSOLE + ".";
-            lbl_precio.Text = "$" + Selected_Game.PRICE.ToString();
+            lbl_precio.Text = $" {SAL_Inf_Precio}";
             lbl_bits.Text = "Bits: " + Selected_Game.BITS.ToString() + ".";
             int fila = Selected_Game.FOLDER;
             int columna = Selected_Game.NUM_IMAGE;

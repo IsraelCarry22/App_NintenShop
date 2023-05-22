@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.AccessControl;
 
 namespace App_NintenShop
 {
@@ -20,8 +21,10 @@ namespace App_NintenShop
                 {
                     file_tiket.WriteLine(Console.Ticket());
                 }
-                file_tiket.WriteLine($"Iva: ${final_purchase_with_Iva}");
-                file_tiket.WriteLine($"Compra Total: ${final_purchase}");
+                string Salida_1 = string.Format("{0:C2}", final_purchase_with_Iva);
+                string Salida_2 = string.Format("{0:C2}", final_purchase);
+                file_tiket.WriteLine($"Iva: {Salida_1}");
+                file_tiket.WriteLine($"Compra Total: {Salida_2}");
                 file_tiket.WriteLine("\nGracias por comprar en NintenShop Inc.");
             }
         }
