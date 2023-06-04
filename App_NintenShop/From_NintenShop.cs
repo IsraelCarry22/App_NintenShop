@@ -7,6 +7,10 @@ using System.Media;
 using System.IO;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace App_NintenShop
 {
@@ -411,6 +415,7 @@ namespace App_NintenShop
                             case "gba":
                                 videojuegos_gba = TableList.ToArray();
                                 break;
+                            default : return;
                         }
                     }
                 }
