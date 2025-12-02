@@ -1,16 +1,11 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace App_NintenShop
 {
@@ -59,6 +54,8 @@ namespace App_NintenShop
                     Image_Paths[i, j] = File[j];
                 }
             }
+            Information_Game(videojuegos_nes, 0);
+            Filter_Games(Filter_Nes, videojuegos_nes);
         }
 
         public void Btm_filter_nes_Click(object sender, EventArgs e)
@@ -138,59 +135,21 @@ namespace App_NintenShop
         private void Btn_comprar_Click(object sender, EventArgs e)
         {
             int Selected_Game_Buy = List_juegos.SelectedIndex;
-            if (Filter_Nes == true)
+            if (Selected_Game_Buy != -1)
             {
-                Comprar_Unidad(videojuegos_nes, Selected_Game_Buy);
-            }
-            else if (Filter_Gb == true)
-            {
-                Comprar_Unidad(videojuegos_gb, Selected_Game_Buy);
-            }
-            else if (Filter_Snes == true)
-            {
-                Comprar_Unidad(videojuegos_snes, Selected_Game_Buy);
-            }
-            else if (Filter_N64 == true)
-            {
-                Comprar_Unidad(videojuegos_n64, Selected_Game_Buy);
-            }
-            else
-            {
-                Comprar_Unidad(videojuegos_gba, Selected_Game_Buy);
+                Videojuego[] selectedList = GetSelectedGameList();
+                Comprar_Unidad(selectedList, Selected_Game_Buy);
             }
         }
 
         private void Btn_añadir_carrito_Click(object sender, EventArgs e)
         {
             int Selected_Game_Buy = List_juegos.SelectedIndex;
-            Videojuego Selected_Game;
             if (Selected_Game_Buy != -1)
             {
-                if (Filter_Nes == true)
-                {
-                    Selected_Game = videojuegos_nes[Selected_Game_Buy];
-                    Add_Cart_Item(Selected_Game);
-                }
-                else if (Filter_Gb == true)
-                {
-                    Selected_Game = videojuegos_gb[Selected_Game_Buy];
-                    Add_Cart_Item(Selected_Game);
-                }
-                else if (Filter_Snes == true)
-                {
-                    Selected_Game = videojuegos_snes[Selected_Game_Buy];
-                    Add_Cart_Item(Selected_Game);
-                }
-                else if (Filter_N64 == true)
-                {
-                    Selected_Game = videojuegos_n64[Selected_Game_Buy];
-                    Add_Cart_Item(Selected_Game);
-                }
-                else
-                {
-                    Selected_Game = videojuegos_gba[Selected_Game_Buy];
-                    Add_Cart_Item(Selected_Game);
-                }
+                Videojuego[] selectedList = GetSelectedGameList();
+                Videojuego Selected_Game = selectedList[Selected_Game_Buy];
+                Add_Cart_Item(Selected_Game);
             }
         }
 
@@ -199,101 +158,115 @@ namespace App_NintenShop
             int Selected_Index = List_juegos.SelectedIndex;
             if (Selected_Index != -1)
             {
-                Videojuego Selected_Game;
-                if (Filter_Nes == true)
-                {
-                    Selected_Game = videojuegos_nes[Selected_Index];
-                    Information_Game(videojuegos_nes, Selected_Index);
-                }
-                else if (Filter_Gb == true)
-                {
-                    Selected_Game = videojuegos_gb[Selected_Index];
-                    Information_Game(videojuegos_gb, Selected_Index);
-                }
-                else if (Filter_Snes == true)
-                {
-                    Selected_Game = videojuegos_snes[Selected_Index];
-                    Information_Game(videojuegos_snes, Selected_Index);
-                }
-                else if (Filter_N64 == true)
-                {
-                    Selected_Game = videojuegos_n64[Selected_Index];
-                    Information_Game(videojuegos_n64, Selected_Index);
-                }
-                else
-                {
-                    Selected_Game = videojuegos_gba[Selected_Index];
-                    Information_Game(videojuegos_gba, Selected_Index);
-                }
+                Videojuego[] selectedList = GetSelectedGameList();
+                Information_Game(selectedList, Selected_Index);
             }
+        }
+
+        private Videojuego[] GetSelectedGameList()
+        {
+            if (Filter_Nes) return videojuegos_nes;
+            if (Filter_Gb) return videojuegos_gb;
+            if (Filter_Snes) return videojuegos_snes;
+            if (Filter_N64) return videojuegos_n64;
+            return videojuegos_gba; // Por defecto
         }
 
         private void Btn_eliminar_carrito_Click(object sender, EventArgs e)
         {
+            if (Dgv_Carrito.SelectedCells.Count == 0) return;
+
             int selectedRowIndex = Dgv_Carrito.SelectedCells[0].RowIndex;
-            if (selectedRowIndex != -1)
-            {
-                Videojuego deletedVideoGame = Cart_Video_Games_List[selectedRowIndex];
-                Final_purchase -= deletedVideoGame.PRICE;
-                Final_purchase_with_Iva -= Math.Round(deletedVideoGame.PRICE * 0.16, 2);
-                Dgv_Carrito.Rows.RemoveAt(selectedRowIndex);
-                Cart_Video_Games_List.RemoveAt(selectedRowIndex);
-                Accountan--;
-                llbl_compra_iva_carrito.Text = $"${Math.Round(Final_purchase * 0.16, 2)}";
-                lbl_compra_total_carrito.Text = $"${Final_purchase}";
-                lbl_contador_carrito.Text = Accountan.ToString();
-            }
+            if (selectedRowIndex == -1) return;
+
+            Videojuego deletedVideoGame = Cart_Video_Games_List[selectedRowIndex];
+            double price = deletedVideoGame.PRICE;
+
+            RemoveFromCart(selectedRowIndex, price);
+            UpdateUI();
+        }
+
+        private void RemoveFromCart(int selectedRowIndex, double price)
+        {
+            Final_purchase -= price;
+            Final_purchase_with_Iva -= Math.Round(price * 0.16, 2);
+
+            Dgv_Carrito.Rows.RemoveAt(selectedRowIndex);
+            Cart_Video_Games_List.RemoveAt(selectedRowIndex);
+
+            Accountan--;
+        }
+
+        private void UpdateUI()
+        {
+            string totalWithIva = string.Format("{0:C2}", Final_purchase + Math.Round(Final_purchase * 0.16, 2));
+
+            lbl_compra_total_carrito.Text = totalWithIva;
+            lbl_contador_carrito.Text = Accountan.ToString();
         }
 
         private void Btn_imprimir_carrito_Click(object sender, EventArgs e)
         {
-            if (Cart_Video_Games_List.Count > 0)
+            if (Cart_Video_Games_List.Count == 0)
             {
-                Ticket_quantity++;
-                try
-                {
-                    Files_Doc = new Management_of_arhcivos(Cart_Video_Games_List, Ticket_quantity, Final_purchase_with_Iva, Final_purchase);
-                    Console.Beep();
-                    MessageBox.Show("Ticke impreso exitosamente...");
-                    Dgv_Carrito.Rows.Clear();
-                    Cart_Video_Games_List.Clear();
-                    llbl_compra_iva_carrito.Text = "--";
-                    lbl_compra_total_carrito.Text = "--";
-                    lbl_contador_carrito.Text = "0";
-                    Accountan = 0;
-                    Final_purchase_with_Iva = 0.00;
-                    Final_purchase = 0.00;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al imprimir el ticket..." + ex.Message);
-                }
+                MessageBox.Show("No hay productos en el carrito.");
+                return;
             }
+
+            Ticket_quantity++;
+
+            try
+            {
+                PrintTicket();
+                ResetCart();
+                MessageBox.Show("Ticket impreso exitosamente...");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al imprimir el ticket: {ex.Message}");
+            }
+        }
+
+        private void PrintTicket()
+        {
+            Files_Doc = new Management_of_arhcivos(Cart_Video_Games_List, Ticket_quantity, Final_purchase_with_Iva, Final_purchase);
+            Console.Beep();
+        }
+
+        private void ResetCart()
+        {
+            Dgv_Carrito.Rows.Clear();
+            Cart_Video_Games_List.Clear();
+            lbl_compra_total_carrito.Text = "--";
+            lbl_contador_carrito.Text = "0";
+            Accountan = 0;
+            Final_purchase_with_Iva = 0.00;
+            Final_purchase = 0.00;
         }
 
         private void Add_Cart_Item(Videojuego Game)
         {
-            if (!Cart_Video_Games_List.Contains(Game))
-            {
-                Index_Dgv = Dgv_Carrito.Rows.Add();
-                Cart_Video_Games_List.Add(Game);
-                Accountan++;
-                lbl_contador_carrito.Text = Accountan.ToString();
-                Final_purchase += Game.PRICE;
-                Final_purchase_with_Iva = Math.Round((Final_purchase * 0.16), 2);
-                Console.Beep();
-                Videojuego Add_Console = Cart_Video_Games_List.Last();
-                string Salida_Precio = string.Format("{0:C2}",Add_Console.PRICE);
-                Dgv_Carrito.Rows[Index_Dgv].Cells[0].Value = Add_Console.TITLE;
-                Dgv_Carrito.Rows[Index_Dgv].Cells[1].Value = Add_Console.GENERE;
-                Dgv_Carrito.Rows[Index_Dgv].Cells[2].Value = Add_Console.CONSOLE;
-                Dgv_Carrito.Rows[Index_Dgv].Cells[3].Value = Salida_Precio;
-                string Salida_1 = string.Format("{0:C2}", Final_purchase_with_Iva);
-                string Salida_2 = string.Format("{0:C2}", Final_purchase);
-                llbl_compra_iva_carrito.Text = $"{Salida_1}";
-                lbl_compra_total_carrito.Text = $"{Salida_2}";
-            }
+            if (Cart_Video_Games_List.Contains(Game)) return;
+
+            Index_Dgv = Dgv_Carrito.Rows.Add();
+            Cart_Video_Games_List.Add(Game);
+            Accountan++;
+            
+            Final_purchase += Game.PRICE;
+            Final_purchase_with_Iva = Math.Round(Final_purchase * 0.16, 2);
+
+            Console.Beep();
+            UpdateUI();
+            AddItemToGrid(Game);
         }
+
+        private void AddItemToGrid(Videojuego game)
+        {
+            string formattedPrice = string.Format("{0:C2}", game.PRICE);
+            Dgv_Carrito.Rows[Index_Dgv].Cells[0].Value = game.TITLE;
+            Dgv_Carrito.Rows[Index_Dgv].Cells[1].Value = formattedPrice;
+        }
+
 
         private void Filter_Games(bool Filter, Videojuego[] Video_Games)
         {
@@ -314,47 +287,60 @@ namespace App_NintenShop
 
         private void Comprar_Unidad(Videojuego[] Video_Games, int Selected_Index)
         {
-            if (Selected_Index != -1)
-            {
-                Videojuego Selected_Game = Video_Games[Selected_Index];
-                double Buy = Selected_Game.PRICE;
-                double Iva = Math.Round((Buy / 1.16) * .16, 2);
-                Buy = Math.Round(Buy - Iva, 2);
-                double Final_Purchase = Buy + Iva;
-                string Salida_1 = string.Format("{0:C2}", Iva);
-                string Salida_2 = string.Format("{0:C2}", Buy);
-                string Salida_3 = string.Format("{0:C2}", Final_Purchase);
-                Console.Beep();
-                MessageBox.Show(
-                    $"NintenShop            {DateTime.Now}\n\n"
-                    + "Titulo: " + $"{Selected_Game.TITLE}" + "\n"
-                    + "Genero: " + $"{Selected_Game.GENERE}" + "\n"
-                    + "Año: " + $"{Selected_Game.YEAR}" + "\n"
-                    + "Precio: " + $"{Selected_Game.PRICE}" + "\n\n"
-                    + "Sub Iva: " + $"{Salida_1}" + "\n"
-                    + "Total: " + $"{Salida_2}\n\n"
-                    + "Sub Total Final:" + $"{Salida_3}\n"
-                    + "Gracias por su compra.");
-            }
+            if (Selected_Index == -1) return;
+
+            Videojuego Selected_Game = Video_Games[Selected_Index];
+            double Buy = Selected_Game.PRICE;
+            double Iva = Math.Round((Buy / 1.16) * 0.16, 2);
+            Buy = Math.Round(Buy - Iva, 2);
+            double Final_Purchase = Buy + Iva;
+
+            string formattedIva = string.Format("{0:C2}", Iva);
+            string formattedBuy = string.Format("{0:C2}", Buy);
+            string formattedFinalPurchase = string.Format("{0:C2}", Final_Purchase);
+
+            Console.Beep();
+            ShowPurchaseDetails(Selected_Game, formattedIva, formattedBuy, formattedFinalPurchase);
+        }
+
+        private void ShowPurchaseDetails(Videojuego game, string iva, string buy, string finalPurchase)
+        {
+            MessageBox.Show(
+                $"NintenShop            {DateTime.Now}\n\n"
+                + $"Titulo: {game.TITLE}\n"
+                + $"Genero: {game.GENERE}\n"
+                + $"Año: {game.YEAR}\n"
+                + $"Precio: {string.Format("{0:C2}", game.PRICE)}\n\n"
+                + $"Sub Iva: {iva}\n"
+                + $"Total: {buy}\n\n"
+                + $"Sub Total Final: {finalPurchase}\n"
+                + "Gracias por su compra.");
         }
 
         private void Information_Game(Videojuego[] Video_Games, int Selected_Image)
         {
+            if (Selected_Image < 0 || Selected_Image >= Video_Games.Length) return;
+
             Videojuego Selected_Game = Video_Games[Selected_Image];
-            string SAL_Inf_Precio = string.Format("{0:C2}", Selected_Game.PRICE);
-            lbl_titulo.Text = "Título: " + Selected_Game.TITLE + ".";
-            lbl_genero.Text = "Género: " + Selected_Game.GENERE + ".";
-            lbl_creadores.Text = "Creador(es): " + Selected_Game.CREATORS + ".";
-            lbl_año.Text = "Año: " + Selected_Game.YEAR.ToString() + ".";
-            lbl_consola.Text = "Consola: " + Selected_Game.CONSOLE + ".";
-            lbl_precio.Text = $" {SAL_Inf_Precio}";
-            lbl_bits.Text = "Bits: " + Selected_Game.BITS.ToString() + ".";
-            int fila = Selected_Game.FOLDER;
-            int columna = Selected_Game.NUM_IMAGE;
-            if (fila >= 0 && columna >= 0 && fila < Image_Paths.GetLength(0) && columna < Image_Paths.GetLength(1))
+            string formattedPrice = string.Format("{0:C2}", Selected_Game.PRICE);
+
+            lbl_titulo.Text = $"Título: {Selected_Game.TITLE}.";
+            lbl_genero.Text = $"Género: {Selected_Game.GENERE}.";
+            lbl_creadores.Text = $"Creador(es): {Selected_Game.CREATORS}.";
+            lbl_año.Text = $"Año: {Selected_Game.YEAR}.";
+            lbl_consola.Text = $"Consola: {Selected_Game.CONSOLE}.";
+            lbl_precio.Text = formattedPrice;
+            lbl_bits.Text = $"Bits: {Selected_Game.BITS}.";
+
+            LoadGameImage(Selected_Game.FOLDER, Selected_Game.NUM_IMAGE);
+        }
+
+        private void LoadGameImage(int row, int column)
+        {
+            if (row >= 0 && column >= 0 && row < Image_Paths.GetLength(0) && column < Image_Paths.GetLength(1))
             {
-                string rutaImagen = Image_Paths[fila, columna];
-                Pic_Caratulas.Image = Image.FromFile(rutaImagen);
+                string imagePath = Image_Paths[row, column];
+                Pic_Caratulas.Image = Image.FromFile(imagePath);
             }
         }
 
@@ -362,16 +348,19 @@ namespace App_NintenShop
         {
             while (readerConsole.Read())
             {
-                Videojuego videojuego = new Videojuego();
-                videojuego.TITLE = readerConsole["Titulo"].ToString();
-                videojuego.GENERE = readerConsole["Genero"].ToString();
-                videojuego.CREATORS = readerConsole["Creadores"].ToString();
-                videojuego.PRICE = Convert.ToDouble(readerConsole["Precio"]);
-                videojuego.CONSOLE = readerConsole["Consola"].ToString();
-                videojuego.YEAR = Convert.ToInt32(readerConsole["Año"]);
-                videojuego.BITS = Convert.ToInt32(readerConsole["Bits"]);
-                videojuego.FOLDER = Convert.ToInt32(readerConsole["Carpeta"]);
-                videojuego.NUM_IMAGE = Convert.ToInt32(readerConsole["Imagen"]);
+                Videojuego videojuego = new Videojuego
+                {
+                    TITLE = readerConsole["Titulo"].ToString(),
+                    GENERE = readerConsole["Genero"].ToString(),
+                    CREATORS = readerConsole["Creadores"].ToString(),
+                    PRICE = Convert.ToDouble(readerConsole["Precio"]),
+                    CONSOLE = readerConsole["Consola"].ToString(),
+                    YEAR = Convert.ToInt32(readerConsole["Año"]),
+                    BITS = Convert.ToInt32(readerConsole["Bits"]),
+                    FOLDER = Convert.ToInt32(readerConsole["Carpeta"]),
+                    NUM_IMAGE = Convert.ToInt32(readerConsole["Imagen"])
+                };
+
                 consoleList.Add(videojuego);
             }
             readerConsole.Close();
@@ -385,49 +374,48 @@ namespace App_NintenShop
                 try
                 {
                     connection.Open();
-                    Console.Beep();
-                    if (connection.State != ConnectionState.Open)
-                    {
-                        return;
-                    }
+                    if (connection.State != ConnectionState.Open) return;
+
                     string[] consoleArr = { "nes", "gb", "snes", "n64", "gba" };
-                    for (int i = 0; i < consoleArr.Length; i++)
+
+                    foreach (string console in consoleArr)
                     {
-                        string console = consoleArr[i];
                         MySqlCommand command = new MySqlCommand($"SELECT Titulo, Genero, Creadores, Precio, Consola, Año, Bits, Carpeta, Imagen FROM videojuegos_{console}", connection);
-                        MySqlDataReader readerTable = command.ExecuteReader();
-                        List<Videojuego> TableList = new List<Videojuego>();
-                        Datos_Tablas_MySql(TableList, command, readerTable);
-                        switch (console.ToLower())
+                        using (MySqlDataReader readerTable = command.ExecuteReader())
                         {
-                            case "nes":
-                                videojuegos_nes = TableList.ToArray();
-                                break;
-                            case "gb":
-                                videojuegos_gb = TableList.ToArray();
-                                break;
-                            case "snes":
-                                videojuegos_snes = TableList.ToArray();
-                                break;
-                            case "n64":
-                                videojuegos_n64 = TableList.ToArray();
-                                break;
-                            case "gba":
-                                videojuegos_gba = TableList.ToArray();
-                                break;
-                            default : return;
+                            List<Videojuego> TableList = new List<Videojuego>();
+                            Datos_Tablas_MySql(TableList, command, readerTable);
+
+                            SetConsoleVideoGames(console.ToLower(), TableList);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al obtener datos: " + ex.Message);
-                    return;
                 }
-                finally
-                {
-                    connection.Close();
-                }
+            }
+        }
+
+        private void SetConsoleVideoGames(string console, List<Videojuego> TableList)
+        {
+            switch (console)
+            {
+                case "nes":
+                    videojuegos_nes = TableList.ToArray();
+                    break;
+                case "gb":
+                    videojuegos_gb = TableList.ToArray();
+                    break;
+                case "snes":
+                    videojuegos_snes = TableList.ToArray();
+                    break;
+                case "n64":
+                    videojuegos_n64 = TableList.ToArray();
+                    break;
+                case "gba":
+                    videojuegos_gba = TableList.ToArray();
+                    break;
             }
         }
     }
